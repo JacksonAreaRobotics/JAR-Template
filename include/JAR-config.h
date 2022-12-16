@@ -5,7 +5,7 @@ extern brain Brain;
 extern motor_group DriveL;
 extern motor_group DriveR;
 
-extern int sensorsetup;
+extern int sensor_setup;
 
 extern float input_to_output;
 

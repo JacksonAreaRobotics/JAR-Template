@@ -9,7 +9,7 @@ motor_group DriveR = motor_group( );
 
 //Pick your sensor setup, using INTERNAL_ENCODERS, ONE_ENCODER_ODOM, TWO_ENCODER_ODOM, or THREE_ENCODER_ODOM. 
 
-int sensorsetup = TWO_ENCODER_ODOM;
+int sensor_setup = TWO_ENCODER_ODOM;
 
 //Fill in information about the chassis and sensor setup. If you are not using a sensor, skip and move to the next one.
 
