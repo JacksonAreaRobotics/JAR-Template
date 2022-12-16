@@ -16,6 +16,7 @@
 #include "v5_vcs.h"
 
 #include "robot-config.h"
+#include "JAR-config.h"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
@@ -24,3 +25,11 @@
 
 #define repeat(iterations)                                                     \
   for (int iterator = 0; iterator < iterations; iterator++)
+
+#define INTERNAL_ENCODERS 0 
+
+#define ONE_ENCODER_ODOM 1
+
+#define TWO_ENCODER_ODOM 2
+
+#define THREE_ENCODER_ODOM 3
