@@ -7,6 +7,8 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 //
+
+#pragma once
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,7 +18,10 @@
 #include "v5_vcs.h"
 
 #include "robot-config.h"
-#include "JAR-config.h"
+#include "autons.h"
+#include "JAR-Template/drive.h"
+#include "JAR-Template/util.h"
+#include "JAR-Template/PID.h"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
@@ -25,11 +30,3 @@
 
 #define repeat(iterations)                                                     \
   for (int iterator = 0; iterator < iterations; iterator++)
-
-#define INTERNAL_ENCODERS 0 
-
-#define ONE_ENCODER_ODOM 1
-
-#define TWO_ENCODER_ODOM 2
-
-#define THREE_ENCODER_ODOM 3
