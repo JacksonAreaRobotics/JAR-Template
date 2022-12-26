@@ -1,19 +1,17 @@
-#include "vex.h"
 
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Motor1               motor         1               
-// Motor2               motor         2               
-// Motor8               motor         8               
-// Motor9               motor         9               
-// Rotation3            rotation      3               
-// Rotation10           rotation      10              
-// Inertial4            inertial      4               
-// ---- END VEXCODE CONFIGURED DEVICES ----
+#include "vex.h"
 
 using namespace vex;
 competition Competition;
+
+/*---------------------------------------------------------------------------*/
+/*                             VEXcode Config                                */
+/*                                                                           */
+/*  Before you do anything else, start by configuring your motors and        */
+/*  sensors using the V5 port icon in the top right of the screen. Doing     */
+/*  so will update robot-config.cpp and robot-config.h automatically, so     */
+/*  you don't have to.                                                       */
+/*---------------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------------*/
 /*                             JAR-Template Config                           */
@@ -23,20 +21,18 @@ competition Competition;
 /*  already have configured your robot manually with the sidebar configurer. */
 /*---------------------------------------------------------------------------*/
 
-//Add your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
-
 Drive chassis(
 
 //Add your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 
 //Left Motors:
-motor_group(Motor1, Motor2),
+motor_group(Motor2),
 
 //Right Motors:
-motor_group(Motor8, Motor9),
+motor_group(Motor4),
 
-//Inertial
-Inertial4,
+//Put the name of your Inertial Sensor here:
+Inertial3,
 
 //Wheel Diameter (4" is really 4.125")
 4.125,
@@ -45,7 +41,22 @@ Inertial4,
 1.3333,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
-360
+360,
+
+NULL,     NULL,
+
+
+NULL,     NULL,
+
+NULL,
+
+NULL,
+
+NULL,
+
+NULL,
+
+NULL
 
 );
 

@@ -18,8 +18,8 @@
 #include "v5_vcs.h"
 
 #include "robot-config.h"
-#include "autons.h"
 #include "JAR-Template/drive.h"
+#include "autons.h"
 #include "JAR-Template/util.h"
 #include "JAR-Template/PID.h"
 
