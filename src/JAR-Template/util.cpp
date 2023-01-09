@@ -19,3 +19,8 @@ float clamp(float input, float min, float max){
   if(input < min){ return(min); }
   return(input);
 }
+
+bool is_reversed(double input){
+  if(input<0) return(true);
+  return(false);
+}

@@ -1,4 +1,3 @@
-
 #include "vex.h"
 
 using namespace vex;
@@ -23,40 +22,51 @@ competition Competition;
 
 Drive chassis(
 
+ZERO_TRACKER,
+
 //Add your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 
 //Left Motors:
-motor_group(Motor2),
+motor_group(L1,L2,L3),
 
 //Right Motors:
-motor_group(Motor4),
+motor_group(R1,R2,R3),
 
-//Put the name of your Inertial Sensor here:
-Inertial3,
+//Inertial port:
+8,
 
 //Wheel Diameter (4" is really 4.125")
-4.125,
+3.25,
 
 //External ratio, must be in decimal, output speed/input speed
-1.3333,
+1.6,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
-360,
+357,
 
-NULL,     NULL,
+//Drive Motors if you're doing holonomic
+1,     -2,
 
 
-NULL,     NULL,
+3,     -4,
 
-NULL,
+//Forward Tracker port
+1,
 
-NULL,
+//Forward Tracker diameter
+2.75,
 
-NULL,
+//Forward Tracker center distance
+6.5,
 
-NULL,
+//Sideways Tracker port
+2,
 
-NULL
+//Sideways tracker diameter
+2.75,
+
+//Sideways tracker center distance
+6.5
 
 );
 
@@ -81,22 +91,22 @@ void pre_auton(void) {
     Brain.Screen.clearScreen();
     switch(current_auton_selection){
       case 0:
-        Brain.Screen.printAt(50, 50, "No Auto");
+        Brain.Screen.printAt(50, 50, "Drive Test");
         break;
       case 1:
-        Brain.Screen.printAt(50, 50, "Skills");
+        Brain.Screen.printAt(50, 50, "Drive Test");
         break;
       case 2:
-        Brain.Screen.printAt(50, 50, "Left");
+        Brain.Screen.printAt(50, 50, "Turn Test");
         break;
       case 3:
-        Brain.Screen.printAt(50, 50, "6 Disc Left");
+        Brain.Screen.printAt(50, 50, "Swing Test");
         break;
       case 4:
-        Brain.Screen.printAt(50, 50, "Right");
+        Brain.Screen.printAt(50, 50, "Full Test");
         break;
       case 5:
-        Brain.Screen.printAt(50, 50, "AWP");
+        Brain.Screen.printAt(50, 50, "Full Test");
         break;
     }
     if(Brain.Screen.pressing()){
@@ -153,7 +163,6 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }

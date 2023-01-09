@@ -28,6 +28,8 @@ float PID::compute(float error){
   }
   output = kp*error + ki*accumulated_error + kd*(error-previous_error);
 
+  previous_error=error;
+
   if(fabs(error)<settle_error){
     time_spent_settled+=10;
   } else {

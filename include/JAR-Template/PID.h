@@ -15,7 +15,6 @@ public:
   float accumulated_error = 0;
   float previous_error = 0;
   float output = 0;
-  bool settled = false;
   float time_spent_settled = 0;
   float time_spent_running = 0;
 
