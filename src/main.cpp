@@ -33,7 +33,7 @@ motor_group(L1,L2,L3),
 motor_group(R1,R2,R3),
 
 //Inertial port:
-8,
+PORT8,
 
 //Wheel Diameter (4" is really 4.125")
 3.25,
@@ -163,6 +163,7 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+    L1.spin(fwd,1,volt);
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }

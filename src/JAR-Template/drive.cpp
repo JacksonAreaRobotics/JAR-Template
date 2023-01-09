@@ -7,9 +7,8 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   drive_in_to_deg_ratio(wheel_ratio/360.0*M_PI*wheel_diameter),
   DriveL(DriveL),
   DriveR(DriveR),
-  Gyro(gyro_port)
+  Gyro(inertial(gyro_port))
 {
-
 }
 
 void Drive::drive_with_voltage(float leftVoltage, float rightVoltage){
