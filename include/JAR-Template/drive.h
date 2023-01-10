@@ -3,6 +3,8 @@
 
 enum drive_setup {ZERO_TRACKER, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, HOLONOMIC_TWO_ROTATION};
 
+triport ThreeWirePort = vex::triport( vex::PORT22 );
+
 class Drive
 {
 private:
@@ -22,15 +24,14 @@ public:
   motor_group DriveL;
   motor_group DriveR;
   inertial Gyro;
-  /*motor DriveLF = motor(PORT1);
-  motor DriveRF = motor(PORT1);
-  motor DriveLB = motor(PORT1);
-  motor DriveRB = motor(PORT1);
-  rotation R_ForwardTracker = rotation(PORT1);
-  rotation R_SidewaysTracker = rotation(PORT1);
-  triport ThreeWirePort = vex::triport( vex::PORT22 );
-  encoder E_ForwardTracker = encoder(ThreeWirePort.A);
-  encoder E_SidewaysTracker = encoder(ThreeWirePort.C);*/
+  motor DriveLF;
+  motor DriveRF;
+  motor DriveLB;
+  motor DriveRB;
+  rotation R_ForwardTracker;
+  rotation R_SidewaysTracker;
+  encoder E_ForwardTracker;
+  encoder E_SidewaysTracker;
 
   float turn_max_voltage;
   float turn_kp;

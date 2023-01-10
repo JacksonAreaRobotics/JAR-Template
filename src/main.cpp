@@ -45,13 +45,13 @@ PORT8,
 357,
 
 //Drive Motors if you're doing holonomic
-1,     -2,
+PORT1,     -PORT2,
 
 
-3,     -4,
+PORT3,     -PORT4,
 
 //Forward Tracker port
-1,
+PORT1,
 
 //Forward Tracker diameter
 2.75,
@@ -60,7 +60,7 @@ PORT8,
 6.5,
 
 //Sideways Tracker port
-2,
+PORT2,
 
 //Sideways tracker diameter
 2.75,
@@ -163,7 +163,6 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-    L1.spin(fwd,1,volt);
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }

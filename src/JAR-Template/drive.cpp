@@ -5,11 +5,25 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   wheel_ratio(wheel_ratio),
   gyro_scale(gyro_scale),
   drive_in_to_deg_ratio(wheel_ratio/360.0*M_PI*wheel_diameter),
+  ForwardTracker_center_distance(ForwardTracker_center_distance),
+  ForwardTracker_diameter(ForwardTracker_diameter),
+  ForwardTracker_in_to_deg_ratio(M_PI*ForwardTracker_diameter/360.0),
+  SidewaysTracker_center_distance(SidewaysTracker_center_distance),
+  SidewaysTracker_diameter(SidewaysTracker_diameter),
+  SidewaysTracker_in_to_deg_ratio(M_PI*SidewaysTracker_diameter/360.0),
+  drive_setup(drive_setup),
   DriveL(DriveL),
   DriveR(DriveR),
-  Gyro(inertial(gyro_port))
-{
-}
+  Gyro(inertial(gyro_port)),
+  DriveLF(DriveLF_port, is_reversed(DriveLF_port)),
+  DriveRF(DriveRF_port, is_reversed(DriveRF_port)),
+  DriveLB(DriveLB_port, is_reversed(DriveLB_port)),
+  DriveRB(DriveRB_port, is_reversed(DriveRB_port)),
+  R_ForwardTracker(ForwardTracker_port),
+  R_SidewaysTracker(SidewaysTracker_port),
+  E_ForwardTracker(Brain.ThreeWirePort.Port[ForwardTracker_port+1]),
+  E_SidewaysTracker(Brain.ThreeWirePort.Port[SidewaysTracker_port+1])
+{}
 
 void Drive::drive_with_voltage(float leftVoltage, float rightVoltage){
   DriveL.spin(fwd, leftVoltage, volt);
