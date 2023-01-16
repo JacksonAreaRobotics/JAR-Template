@@ -1,7 +1,7 @@
 # JAR-Template
 A simple and powerful VexCode library featuring PID, odom, and custom motion algorithms. 
 
-##Installation
+## Installation
 1. Download the project by cloning above or by clicking [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
 
