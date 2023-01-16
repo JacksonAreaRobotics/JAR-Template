@@ -38,3 +38,20 @@ void full_test(){
   chassis.drive_distance(24);
   chassis.turn_to_angle(0);
 }
+
+void tank_odom_test(){
+  chassis.set_coordinates(0, 0, 0);
+  chassis.drive_to_point(6, 18);
+  chassis.turn_to_point(12,0);
+  chassis.drive_to_point(12, 0);
+  chassis.turn_to_angle(100);
+  chassis.drive_to_point(0, 0);
+}
+
+void holonomic_odom_test(){
+  chassis.set_coordinates(0, 0, 0);
+  chassis.holonomic_drive_to_point(0, 18, 90);
+  chassis.holonomic_drive_to_point(18, 0, 180);
+  chassis.holonomic_drive_to_point(0, 18, 270);
+  chassis.holonomic_drive_to_point(0, 0, 0);
+}

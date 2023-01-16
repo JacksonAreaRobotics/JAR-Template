@@ -11,3 +11,5 @@ void drive_test();
 void turn_test();
 void swing_test();
 void full_test();
+void tank_odom_test();
+void holonomic_odom_test();
