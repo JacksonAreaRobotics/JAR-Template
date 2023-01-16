@@ -6,7 +6,7 @@ A simple and powerful VexCode library featuring PID, odom, and custom motion alg
 
 2. Extract the zipped file (perhaps to a folder such as documents, or vexcode-projects).
 
-3. Open the project in VexCode by choosing "Open" from the file menu and selecting the JAT-Template.v5code file.
+3. Open the project in VexCode by choosing "Open" from the file menu and selecting the JAR-Template.v5code file.
 
 4. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
 
