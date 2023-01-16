@@ -2,7 +2,7 @@
 A simple and powerful VexCode library featuring PID, odom, and custom motion algorithms. 
 
 ## Installation
-1. Download the project by cloning above or by clicking [here](https://github.com/2775Josh/JAR-Template/releases/latest).
+1. Download the project by clicking [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
 2. Extract the zipped file (perhaps to a folder such as documents, or vexcode-projects).
 
