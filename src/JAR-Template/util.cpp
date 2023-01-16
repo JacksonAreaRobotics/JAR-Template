@@ -1,3 +1,5 @@
+#include "vex.h"
+
 float reduce_0_to_360(float angle) { //Takes an input angle in degrees and converts it to a positive angle value below 360.
   while(!(angle >= 0 && angle < 360)) {
     if( angle < 0 ) { angle += 360; }
@@ -12,6 +14,14 @@ float reduce_negative_180_to_180(float angle) { //Takes an input angle in degree
     if(angle >= 180) { angle -= 360; }
   }
   return(angle);
+}
+
+float to_rad(float angle_deg){
+  return(angle_deg/(180.0/M_PI));
+}
+
+float to_deg(float angle_rad){
+  return(angle_rad*(180.0/M_PI));
 }
 
 float clamp(float input, float min, float max){

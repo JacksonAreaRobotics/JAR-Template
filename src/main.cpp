@@ -53,7 +53,7 @@ PORT3,     -PORT4,
 //Forward Tracker port
 PORT1,
 
-//Forward Tracker diameter
+//Forward Tracker diameter (reverse it to make the direction switch)
 2.75,
 
 //Forward Tracker center distance
@@ -62,7 +62,7 @@ PORT1,
 //Sideways Tracker port
 PORT2,
 
-//Sideways tracker diameter
+//Sideways tracker diameter (reverse to make the direction switch)
 2.75,
 
 //Sideways tracker center distance

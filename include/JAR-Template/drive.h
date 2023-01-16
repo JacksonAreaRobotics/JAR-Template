@@ -3,8 +3,6 @@
 
 enum drive_setup {ZERO_TRACKER, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, HOLONOMIC_TWO_ROTATION};
 
-triport ThreeWirePort = vex::triport( vex::PORT22 );
-
 class Drive
 {
 private:
@@ -105,4 +103,8 @@ public:
   void left_swing_to_angle(float angle, float swing_max_voltage, float swing_settle_error, float swing_settle_time, float swing_timeout, float swing_kp, float swing_ki, float swing_kd, float swing_starti);
   void right_swing_to_angle(float angle);
   void right_swing_to_angle(float angle, float swing_max_voltage, float swing_settle_error, float swing_settle_time, float swing_timeout, float swing_kp, float swing_ki, float swing_kd, float swing_starti);
+  
+  Odom odom;
+  int position_track();
+  vex::task odom_task;
 };
