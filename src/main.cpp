@@ -1,3 +1,100 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// EncoderR             encoder       C, D            
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// EncoderB             encoder       A, B            
+// EncoderR             encoder       C, D            
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// EncoderB             encoder       A, B            
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// R2                   motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         5               
+// L2                   motor         4               
+// L3                   motor         3               
+// R1                   motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         5               
+// L2                   motor         4               
+// L3                   motor         3               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         5               
+// L2                   motor         4               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 #include "vex.h"
 
 using namespace vex;
@@ -25,19 +122,19 @@ Drive chassis(
 //Specify your drive setup below. There are seven options:
 //ZERO_TRACKER, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, and HOLONOMIC_TWO_ROTATION
 //For example, if you are not using odometry, put ZERO_TRACKER below:
-ZERO_TRACKER,
+TANK_TWO_ENCODER,
 
 //Add the names of your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 //You will input whatever motor names you chose when you configured your robot using the sidebar configurer, they don't have to be "Motor1" and "Motor2".
 
 //Left Motors:
-motor_group(),
+motor_group(L1,L2,L3),
 
 //Right Motors:
-motor_group(),
+motor_group(R1,R2,R3),
 
 //Specify the PORT NUMBER of your inertial sensor, in PORT format (i.e. "PORT1", not simply "1"):
-PORT1,
+PORT8,
 
 //Input your wheel diameter. (4" omnis are actually closer to 4.125"):
 3.25,
@@ -72,7 +169,7 @@ PORT3,     -PORT4,
 //If you are using position tracking, this is the Forward Tracker port (the tracker which runs parallel to the direction of the chassis).
 //If this is a rotation sensor, leave it in "PORT1" format, inputting the port below.
 //If this is an encoder, enter the port as an integer. Triport A will be a "1", Triport B will be a "2", etc.
-PORT1,
+3,
 
 //Input the Forward Tracker diameter (reverse it to make the direction switch):
 2.75,
@@ -82,7 +179,7 @@ PORT1,
 6.5,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
-PORT1,
+1,
 
 //Sideways tracker diameter (reverse to make the direction switch):
 2.75,
