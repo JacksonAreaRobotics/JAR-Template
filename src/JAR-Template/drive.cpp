@@ -21,7 +21,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   DriveRB(DriveRB_port, is_reversed(DriveRB_port)),
   R_ForwardTracker(ForwardTracker_port),
   R_SidewaysTracker(SidewaysTracker_port),
-  E_ForwardTracker(vex::triport( vex::PORT22 ).C),
+  E_ForwardTracker(vex::triport(vex::PORT22).C),
   E_SidewaysTracker(vex::triport( vex::PORT22 ).A)
 {
   if (drive_setup != ZERO_TRACKER){
