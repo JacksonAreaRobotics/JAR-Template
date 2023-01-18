@@ -144,7 +144,7 @@ void pre_auton(void) {
   }
 }
 
-void autonomous(void) {
+void autonomous(void) {/*
   switch(current_auton_selection){  
     case 0:
       drive_test(); //This is the default auton, if you don't select from the brain.
@@ -167,7 +167,7 @@ void autonomous(void) {
     case 6:
       holonomic_odom_test();
       break;
- }
+ }*/
 }
 
 /*---------------------------------------------------------------------------*/
