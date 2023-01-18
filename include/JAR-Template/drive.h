@@ -30,6 +30,7 @@ public:
   rotation R_SidewaysTracker;
   encoder E_ForwardTracker;
   encoder E_SidewaysTracker;
+  triport ThreeWirePort = vex::triport( vex::PORT22 );
 
   float turn_max_voltage;
   float turn_kp;
