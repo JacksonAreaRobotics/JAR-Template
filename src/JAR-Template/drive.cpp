@@ -18,12 +18,12 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   DriveLF(DriveLF_port, is_reversed(DriveLF_port)),
   DriveRF(DriveRF_port, is_reversed(DriveRF_port)),
   DriveLB(DriveLB_port, is_reversed(DriveLB_port)),
-  DriveRB(DriveRB_port, is_reversed(DriveRB_port)),
+  DriveRB(DriveRB_port, is_reversed(DriveRB_port))/*,
   R_ForwardTracker(ForwardTracker_port),
   R_SidewaysTracker(SidewaysTracker_port),
   E_ForwardTracker(Brain.ThreeWirePort.Port[ForwardTracker_port+1]),
-  E_SidewaysTracker(Brain.ThreeWirePort.Port[SidewaysTracker_port+1])
-{
+  E_SidewaysTracker(Brain.ThreeWirePort.Port[SidewaysTracker_port+1])*/
+{/*
   if (drive_setup != ZERO_TRACKER){
     if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){
       odom.set_physical_distances(ForwardTracker_center_distance, 0);
@@ -31,7 +31,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
       odom.set_physical_distances(ForwardTracker_center_distance, SidewaysTracker_center_distance);
     }
     odom_task = task(position_track_task);
-  }
+  }*/
 }
 
 void Drive::drive_with_voltage(float leftVoltage, float rightVoltage){
@@ -206,9 +206,9 @@ void Drive::right_swing_to_angle(float angle, float swing_max_voltage, float swi
 
 float Drive::get_ForwardTracker_position(){
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
-    return(E_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
+    return(0);//E_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }else{
-    return(R_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
+    return(0);//R_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }
 }
 
@@ -216,9 +216,9 @@ float Drive::get_SidewaysTracker_position(){
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){
     return(0);
   }else if (drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
-    return(E_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
+    return(0);//E_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
   }else{
-    return(R_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
+    return(0);//R_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
   }
 }
 
