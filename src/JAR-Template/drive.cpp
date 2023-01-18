@@ -23,7 +23,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   R_SidewaysTracker(SidewaysTracker_port),
   E_ForwardTracker(Brain.ThreeWirePort.Port[ForwardTracker_port+1]),
   E_SidewaysTracker(Brain.ThreeWirePort.Port[SidewaysTracker_port+1])*/
-{/*
+{
   if (drive_setup != ZERO_TRACKER){
     if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){
       odom.set_physical_distances(ForwardTracker_center_distance, 0);
@@ -31,7 +31,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
       odom.set_physical_distances(ForwardTracker_center_distance, SidewaysTracker_center_distance);
     }
     odom_task = task(position_track_task);
-  }*/
+  }
 }
 
 void Drive::drive_with_voltage(float leftVoltage, float rightVoltage){
