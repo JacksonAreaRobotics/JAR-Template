@@ -18,9 +18,9 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   DriveLF(DriveLF_port, is_reversed(DriveLF_port)),
   DriveRF(DriveRF_port, is_reversed(DriveRF_port)),
   DriveLB(DriveLB_port, is_reversed(DriveLB_port)),
-  DriveRB(DriveRB_port, is_reversed(DriveRB_port))/*,
+  DriveRB(DriveRB_port, is_reversed(DriveRB_port)),
   R_ForwardTracker(ForwardTracker_port),
-  R_SidewaysTracker(SidewaysTracker_port),
+  R_SidewaysTracker(SidewaysTracker_port)/*,
   E_ForwardTracker(Brain.ThreeWirePort.Port[ForwardTracker_port+1]),
   E_SidewaysTracker(Brain.ThreeWirePort.Port[SidewaysTracker_port+1])*/
 {
@@ -208,7 +208,7 @@ float Drive::get_ForwardTracker_position(){
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(0);//E_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }else{
-    return(0);//R_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
+    return(R_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }
 }
 
@@ -218,7 +218,7 @@ float Drive::get_SidewaysTracker_position(){
   }else if (drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(0);//E_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
   }else{
-    return(0);//R_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
+    return(R_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
   }
 }
 

@@ -25,11 +25,11 @@ public:
   motor DriveLF;
   motor DriveRF;
   motor DriveLB;
-  motor DriveRB;/*
+  motor DriveRB;
   rotation R_ForwardTracker;
   rotation R_SidewaysTracker;
-  encoder E_ForwardTracker;
-  encoder E_SidewaysTracker;*/
+  //encoder E_ForwardTracker;
+  //encoder E_SidewaysTracker;
 
   float turn_max_voltage;
   float turn_kp;
