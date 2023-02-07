@@ -2,6 +2,60 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // L1                   motor         6               
+// L2                   motor         3               
+// L3                   motor         4               
+// R1                   motor         7               
+// R2                   motor         5               
+// R3                   motor         2               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         3               
+// L3                   motor         4               
+// R1                   motor         7               
+// R2                   motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         3               
+// L3                   motor         4               
+// R1                   motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         3               
+// L3                   motor         4               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// L2                   motor         3               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Motor1               motor         1               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// L1                   motor         6               
 // L2                   motor         4               
 // L3                   motor         3               
 // R1                   motor         7               
@@ -122,7 +176,7 @@ Drive chassis(
 //Specify your drive setup below. There are seven options:
 //ZERO_TRACKER, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, and HOLONOMIC_TWO_ROTATION
 //For example, if you are not using odometry, put ZERO_TRACKER below:
-ZERO_TRACKER,
+TANK_TWO_ENCODER,
 
 //Add the names of your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 //You will input whatever motor names you chose when you configured your robot using the sidebar configurer, they don't have to be "Motor1" and "Motor2".
@@ -176,13 +230,13 @@ PORT3,     -PORT4,
 
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
 //This distance is in inches:
-6.5,
+-3,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
 1,
 
 //Sideways tracker diameter (reverse to make the direction switch):
-2.75,
+-2.75,
 
 //Sideways tracker center distance (positive distance is behind the center of the robot, negative is in front):
 6.5
@@ -200,13 +254,14 @@ PORT3,     -PORT4,
 /*---------------------------------------------------------------------------*/
 
 int current_auton_selection = 0;
+bool auto_started = false;
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   default_constants();
 
-  while(1){
+  while(auto_started == false){
     Brain.Screen.clearScreen();
     switch(current_auton_selection){
       case 0:
@@ -225,16 +280,19 @@ void pre_auton(void) {
         Brain.Screen.printAt(50, 50, "Full Test");
         break;
       case 5:
-        Brain.Screen.printAt(50, 50, "Tank Odom Test");
+        Brain.Screen.printAt(50, 50, "Odom Test");
         break;
       case 6:
+        Brain.Screen.printAt(50, 50, "Tank Odom Test");
+        break;
+      case 7:
         Brain.Screen.printAt(50, 50, "Holonomic Odom Test");
         break;
     }
     if(Brain.Screen.pressing()){
       while(Brain.Screen.pressing()) {}
       current_auton_selection ++;
-    } else if (current_auton_selection == 6){
+    } else if (current_auton_selection == 8){
       current_auton_selection = 0;
     }
     task::sleep(10);
@@ -242,6 +300,7 @@ void pre_auton(void) {
 }
 
 void autonomous(void) {
+  auto_started = true;
   switch(current_auton_selection){  
     case 0:
       drive_test(); //This is the default auton, if you don't select from the brain.
@@ -259,9 +318,12 @@ void autonomous(void) {
       full_test();
       break;
     case 5:
-      tank_odom_test();
+      odom_test();
       break;
     case 6:
+      tank_odom_test();
+      break;
+    case 7:
       holonomic_odom_test();
       break;
  }

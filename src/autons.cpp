@@ -39,6 +39,19 @@ void full_test(){
   chassis.turn_to_angle(0);
 }
 
+void odom_test(){
+  chassis.set_coordinates(0, 0, 0);
+  while(1){
+    Brain.Screen.clearScreen();
+    Brain.Screen.printAt(50,50, "X: %f", chassis.get_X_position());
+    Brain.Screen.printAt(50,70, "Y: %f", chassis.get_Y_position());
+    Brain.Screen.printAt(50,90, "Heading: %f", chassis.get_absolute_heading());
+    Brain.Screen.printAt(50,110, "ForwardTracker: %f", chassis.get_ForwardTracker_position());
+    Brain.Screen.printAt(50,130, "SidewaysTracker: %f", chassis.get_SidewaysTracker_position());
+    task::sleep(20);
+  }
+}
+
 void tank_odom_test(){
   chassis.set_coordinates(0, 0, 0);
   chassis.drive_to_point(6, 18);
