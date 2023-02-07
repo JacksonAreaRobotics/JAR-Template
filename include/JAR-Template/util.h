@@ -11,3 +11,5 @@ float to_deg(float angle_rad);
 float clamp(float input, float min, float max);
 
 bool is_reversed(double input);
+
+float to_volt(float percent);

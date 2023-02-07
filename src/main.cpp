@@ -1,154 +1,3 @@
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         3               
-// L3                   motor         4               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         3               
-// L3                   motor         4               
-// R1                   motor         7               
-// R2                   motor         5               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         3               
-// L3                   motor         4               
-// R1                   motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         3               
-// L3                   motor         4               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         3               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Motor1               motor         1               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// EncoderR             encoder       C, D            
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// EncoderB             encoder       A, B            
-// EncoderR             encoder       C, D            
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// EncoderB             encoder       A, B            
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// R3                   motor         2               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// R2                   motor         5               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         6               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         5               
-// L2                   motor         4               
-// L3                   motor         3               
-// R1                   motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         5               
-// L2                   motor         4               
-// L3                   motor         3               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         5               
-// L2                   motor         4               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// L1                   motor         5               
-// ---- END VEXCODE CONFIGURED DEVICES ----
 #include "vex.h"
 
 using namespace vex;
@@ -176,19 +25,19 @@ Drive chassis(
 //Specify your drive setup below. There are seven options:
 //ZERO_TRACKER, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, and HOLONOMIC_TWO_ROTATION
 //For example, if you are not using odometry, put ZERO_TRACKER below:
-TANK_TWO_ENCODER,
+ZERO_TRACKER,
 
 //Add the names of your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 //You will input whatever motor names you chose when you configured your robot using the sidebar configurer, they don't have to be "Motor1" and "Motor2".
 
 //Left Motors:
-motor_group(L1,L2,L3),
+motor_group(),
 
 //Right Motors:
-motor_group(R1,R2,R3),
+motor_group(),
 
 //Specify the PORT NUMBER of your inertial sensor, in PORT format (i.e. "PORT1", not simply "1"):
-PORT8,
+PORT1,
 
 //Input your wheel diameter. (4" omnis are actually closer to 4.125"):
 3.25,
@@ -200,7 +49,7 @@ PORT8,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
-357,
+360,
 
 /*---------------------------------------------------------------------------*/
 /*                                  PAUSE!                                   */
@@ -230,7 +79,7 @@ PORT3,     -PORT4,
 
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
 //This distance is in inches:
--3,
+-2,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
 1,
@@ -239,7 +88,7 @@ PORT3,     -PORT4,
 -2.75,
 
 //Sideways tracker center distance (positive distance is behind the center of the robot, negative is in front):
-6.5
+5.5
 
 );
 
@@ -350,6 +199,10 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+
+    //Replace this line with chassis.control_tank(); for tank drive.
+    chassis.control_arcade();
+
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }

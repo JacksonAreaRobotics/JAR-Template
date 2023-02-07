@@ -261,18 +261,20 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
 
 void Drive::drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti){
   PID drivePID(hypot(X_position-get_X_position(),Y_position-get_Y_position()), drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
-  PID headingPID(reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position())-get_absolute_heading())), heading_kp, heading_ki, heading_kd, heading_starti);
+  PID headingPID(reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading()), heading_kp, heading_ki, heading_kd, heading_starti);
   while(drivePID.is_settled() == false){
     float drive_error = hypot(X_position-get_X_position(),Y_position-get_Y_position());
-    float heading_error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position())-get_absolute_heading()));
-
+    float heading_error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading());
     float drive_output = drivePID.compute(drive_error);
-    float heading_output = headingPID.compute(heading_error);
 
     float heading_scale_factor = cos(to_rad(heading_error));
     drive_output*=heading_scale_factor;
-    heading_output = reduce_negative_90_to_90(heading_output);
-    drive_output = clamp(drive_output, -heading_scale_factor*drive_max_voltage, heading_scale_factor*drive_max_voltage);
+    heading_error = reduce_negative_90_to_90(heading_error);
+    float heading_output = headingPID.compute(heading_error);
+    
+    if (drive_error<drive_settle_error) { heading_output = 0; }
+
+    drive_output = clamp(drive_output, -fabs(heading_scale_factor)*drive_max_voltage, fabs(heading_scale_factor)*drive_max_voltage);
     heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
 
     drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
@@ -348,4 +350,14 @@ void Drive::holonomic_drive_to_point(float X_position, float Y_position, float a
   DriveLB.stop(hold);
   DriveRB.stop(hold);
   DriveRF.stop(hold);
+}
+
+void Drive::control_arcade(){
+  DriveL.spin(fwd, to_volt(controller(primary).Axis3.value()+controller(primary).Axis1.value()), volt);
+  DriveR.spin(fwd, to_volt(controller(primary).Axis3.value()-controller(primary).Axis1.value()), volt);
+}
+
+void Drive::control_tank(){
+  DriveL.spin(fwd, to_volt(controller(primary).Axis3.value()), volt);
+  DriveR.spin(fwd, to_volt(controller(primary).Axis2.value()), volt);
 }
