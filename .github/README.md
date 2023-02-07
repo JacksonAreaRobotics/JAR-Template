@@ -1,7 +1,7 @@
 # JAR-Template
 A simple and powerful VexCode library featuring PID, odom, and custom motion algorithms. 
 
-Google Forms link for Beta testers: https://forms.gle/2m4VwJZByn6h2DB58
+Google Forms link for Beta users: https://forms.gle/2m4VwJZByn6h2DB58
 
 ## Installation
 1. Download the project by downloading the .zip file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
