@@ -1,5 +1,5 @@
 # JAR-Template
-A simple and powerful VexCode library featuring PID, odom, and custom motion algorithms. 
+A simple and powerful VexCode library featuring PID, odometry, and custom motion algorithms. 
 
 Google Forms link for feedback/suggestions: https://forms.gle/2m4VwJZByn6h2DB58
 
