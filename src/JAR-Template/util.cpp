@@ -42,3 +42,7 @@ bool is_reversed(double input){
   if(input<0) return(true);
   return(false);
 }
+
+float to_volt(float percent){
+  return(percent*12.0/100.0);
+}

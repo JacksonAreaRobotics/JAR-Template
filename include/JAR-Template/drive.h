@@ -16,6 +16,7 @@ private:
   float SidewaysTracker_center_distance;
   float SidewaysTracker_diameter;
   float SidewaysTracker_in_to_deg_ratio;
+  vex:: triport ThreeWire = vex::triport(vex::PORT22);
 
 public: 
   drive_setup drive_setup = ZERO_TRACKER;
@@ -25,11 +26,11 @@ public:
   motor DriveLF;
   motor DriveRF;
   motor DriveLB;
-  motor DriveRB;/*
+  motor DriveRB;
   rotation R_ForwardTracker;
   rotation R_SidewaysTracker;
   encoder E_ForwardTracker;
-  encoder E_SidewaysTracker;*/
+  encoder E_SidewaysTracker;
 
   float turn_max_voltage;
   float turn_kp;
@@ -129,4 +130,7 @@ public:
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage);
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout);
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti);
+
+  void control_arcade();
+  void control_tank();
 };

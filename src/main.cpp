@@ -49,7 +49,7 @@ PORT1,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
-357,
+360,
 
 /*---------------------------------------------------------------------------*/
 /*                                  PAUSE!                                   */
@@ -72,23 +72,23 @@ PORT3,     -PORT4,
 //If you are using position tracking, this is the Forward Tracker port (the tracker which runs parallel to the direction of the chassis).
 //If this is a rotation sensor, leave it in "PORT1" format, inputting the port below.
 //If this is an encoder, enter the port as an integer. Triport A will be a "1", Triport B will be a "2", etc.
-PORT1,
+3,
 
 //Input the Forward Tracker diameter (reverse it to make the direction switch):
 2.75,
 
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
 //This distance is in inches:
-6.5,
+-2,
 
 //Input the Sideways Tracker Port, following the same steps as the Forward Tracker Port:
-PORT1,
+1,
 
 //Sideways tracker diameter (reverse to make the direction switch):
-2.75,
+-2.75,
 
 //Sideways tracker center distance (positive distance is behind the center of the robot, negative is in front):
-6.5
+5.5
 
 );
 
@@ -103,13 +103,14 @@ PORT1,
 /*---------------------------------------------------------------------------*/
 
 int current_auton_selection = 0;
+bool auto_started = false;
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   default_constants();
 
-  while(1){
+  while(auto_started == false){
     Brain.Screen.clearScreen();
     switch(current_auton_selection){
       case 0:
@@ -128,16 +129,19 @@ void pre_auton(void) {
         Brain.Screen.printAt(50, 50, "Full Test");
         break;
       case 5:
-        Brain.Screen.printAt(50, 50, "Tank Odom Test");
+        Brain.Screen.printAt(50, 50, "Odom Test");
         break;
       case 6:
+        Brain.Screen.printAt(50, 50, "Tank Odom Test");
+        break;
+      case 7:
         Brain.Screen.printAt(50, 50, "Holonomic Odom Test");
         break;
     }
     if(Brain.Screen.pressing()){
       while(Brain.Screen.pressing()) {}
       current_auton_selection ++;
-    } else if (current_auton_selection == 6){
+    } else if (current_auton_selection == 8){
       current_auton_selection = 0;
     }
     task::sleep(10);
@@ -145,6 +149,7 @@ void pre_auton(void) {
 }
 
 void autonomous(void) {
+  auto_started = true;
   switch(current_auton_selection){  
     case 0:
       drive_test(); //This is the default auton, if you don't select from the brain.
@@ -162,9 +167,12 @@ void autonomous(void) {
       full_test();
       break;
     case 5:
-      tank_odom_test();
+      odom_test();
       break;
     case 6:
+      tank_odom_test();
+      break;
+    case 7:
       holonomic_odom_test();
       break;
  }
@@ -191,6 +199,10 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+
+    //Replace this line with chassis.control_tank(); for tank drive.
+    chassis.control_arcade();
+
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }

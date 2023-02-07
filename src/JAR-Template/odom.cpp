@@ -16,9 +16,12 @@ void Odom::set_position(float X_position, float Y_position, float orientation_de
 void Odom::update_position(float ForwardTracker_position, float SidewaysTracker_position, float orientation_deg){
   float Forward_delta = ForwardTracker_position-this->ForwardTracker_position;
   float Sideways_delta = SidewaysTracker_position-this->SideWaysTracker_position;
+  this->ForwardTracker_position=ForwardTracker_position;
+  this->SideWaysTracker_position=SidewaysTracker_position;
   float orientation_rad = to_rad(orientation_deg);
   float prev_orientation_rad = to_rad(this->orientation_deg);
   float orientation_delta_rad = orientation_rad-prev_orientation_rad;
+  this->orientation_deg=orientation_deg;
 
   float local_X_position;
   float local_Y_position;
@@ -28,7 +31,7 @@ void Odom::update_position(float ForwardTracker_position, float SidewaysTracker_
     local_Y_position = Forward_delta;
   } else {
     local_X_position = (2*sin(orientation_delta_rad/2))*((Sideways_delta/orientation_delta_rad)+SidewaysTracker_center_distance); 
-    local_Y_position = (2*sin(orientation_delta_rad/2))*((Forward_delta/orientation_delta_rad)-ForwardTracker_center_distance);
+    local_Y_position = (2*sin(orientation_delta_rad/2))*((Forward_delta/orientation_delta_rad)+ForwardTracker_center_distance);
   }
 
   float local_polar_angle;
