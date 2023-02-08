@@ -1,6 +1,6 @@
 layout: page
 title: "Docs"
-permalink /JAR-Template
+permalink: /JAR-Template
 
 # Docs
 Documentation for JAR-Template. 
