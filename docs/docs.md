@@ -1,6 +1,6 @@
 layout: page
 title: "Docs"
-permalink: /JAR-Template
+permalink: https://2775josh.github.io/JAR-Template/
 
 # Docs
 Documentation for JAR-Template. 
