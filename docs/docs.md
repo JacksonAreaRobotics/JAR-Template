@@ -1,5 +1,5 @@
 layout: page
-title: Docs
+title: "Docs"
 permalink /JAR-Template
 
 # Docs
