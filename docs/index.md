@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Docs"
+theme: Hyde
 permalink: /
 ---
 
