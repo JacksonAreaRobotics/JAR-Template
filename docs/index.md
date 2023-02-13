@@ -1,5 +1,6 @@
 ---
-layout: page
+theme: midnight
+layout: default
 title: "Docs"
 permalink: /
 ---
