@@ -1,5 +1,5 @@
 ---
-theme: midnight
+theme: tactile
 layout: default
 title: "Docs"
 permalink: /
