@@ -1,7 +1,8 @@
 ---
 theme: tactile
 layout: default
-title: "JAR Template Documentation"
+title: JAR Template Documentation
+parent: JAR Template Docs
 permalink: /docs
 ---
 
