@@ -1,5 +1,5 @@
 ---
-theme: tactile
+theme: just-the-docs
 layout: default
 title: "JAR Template Docs"
 has_children: true
