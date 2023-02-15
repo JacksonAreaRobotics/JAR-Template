@@ -2,7 +2,7 @@
 theme: tactile
 layout: default
 title: "JAR Template Documentation"
-permalink: /
+permalink: /docs
 ---
 
 # Docs
