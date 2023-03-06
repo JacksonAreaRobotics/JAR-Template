@@ -46,3 +46,10 @@ bool is_reversed(double input){
 float to_volt(float percent){
   return(percent*12.0/100.0);
 }
+
+int to_port(int port){
+  if(port>8){
+    return(0);
+  }
+  return(port-1);
+}
