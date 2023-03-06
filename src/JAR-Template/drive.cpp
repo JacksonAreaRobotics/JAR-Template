@@ -21,8 +21,8 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   DriveRB(DriveRB_port, is_reversed(DriveRB_port)),
   R_ForwardTracker(ForwardTracker_port),
   R_SidewaysTracker(SidewaysTracker_port),
-  E_ForwardTracker(ThreeWire.Port[ForwardTracker_port-1]),
-  E_SidewaysTracker(ThreeWire.Port[SidewaysTracker_port-1])
+  E_ForwardTracker(ThreeWire.Port[to_port(ForwardTracker_port)]),
+  E_SidewaysTracker(ThreeWire.Port[to_port(SidewaysTracker_port)])
 {
   if (drive_setup != ZERO_TRACKER){
     if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){

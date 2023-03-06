@@ -13,3 +13,5 @@ float clamp(float input, float min, float max);
 bool is_reversed(double input);
 
 float to_volt(float percent);
+
+int to_port(int port);
