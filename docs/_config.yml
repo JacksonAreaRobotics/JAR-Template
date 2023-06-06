@@ -1,9 +1,9 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: JAR Template
+description: A simple and powerful VexCode library featuring PID, odometry, and custom motion algorithms.
 theme: just-the-docs
 color_scheme: dark
 
 url: https://2775josh.github.io/JAR-Template/
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Github: https://github.com/2775Josh/JAR-Template
