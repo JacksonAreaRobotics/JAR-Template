@@ -4,6 +4,9 @@ layout: default
 nav_order: 1
 parent: Docs
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This is the drive constructor with prototype and example
 
 <Tabs
