@@ -8,6 +8,8 @@ url: https://2775josh.github.io/JAR-Template/
 aux_links:
   Download JAR-Template: <a href="https://github.com/2775Josh/JAR-Template" target="_blank">
 
+plugins:
+  -jekyll-code-tabs
 
 search_enabled: true
 
