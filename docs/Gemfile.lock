@@ -78,6 +78,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.3.2)
+  jekyll-tabs
   just-the-docs (= 0.5.1)
 
 BUNDLED WITH

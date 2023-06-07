@@ -11,6 +11,9 @@ aux_links:
 
 search_enabled: true
 
+plugins:
+  - jekyll-tabs
+
 search:
   heading_level: 2
   previews: 3
