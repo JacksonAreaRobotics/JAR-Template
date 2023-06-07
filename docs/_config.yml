@@ -6,7 +6,7 @@ color_scheme: dark
 url: https://2775josh.github.io/JAR-Template/
 
 aux_links:
-  Download JAR-Template: <a href="https://github.com/2775Josh/JAR-Template" target="_blank">
+  Download JAR-Template: "https://github.com/2775Josh/JAR-Template"
 
 
 search_enabled: true
