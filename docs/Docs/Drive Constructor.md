@@ -4,24 +4,48 @@ layout: default
 nav_order: 1
 parent: Docs
 ---
-{% codetabs %}
+### First tabs
 
-{% codetab C %}
-```c
-printf("Hello, world!");
+{% tabs log %}
+
+{% tab log php %}
+```php
+var_dump('hello');
 ```
-{% endcodetab %}
+{% endtab %}
 
-{% codetab Go %}
-```go
-fmt.Println("Hello, world!")
+{% tab log js %}
+```javascript
+console.log('hello');
 ```
-{% endcodetab %}
+{% endtab %}
 
-{% codetab Python %}
-```python
-print("Hello, world!")
+{% tab log ruby %}
+```javascript
+pputs 'hello'
 ```
-{% endcodetab %}
+{% endtab %}
 
-{% endcodetabs %}
+{% endtabs %}
+
+### Second tabs
+
+{% tabs data-struct %}
+
+{% tab data-struct yaml %}
+```yaml
+hello:
+  - 'whatsup'
+  - 'hi'
+```
+{% endtab %}
+
+{% tab data-struct json %}
+```json
+{
+    "hello": ["whatsup", "hi"]
+}
+```
+{% endtab %}
+
+{% endtabs %}
