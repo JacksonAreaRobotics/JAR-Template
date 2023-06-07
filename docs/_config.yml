@@ -9,7 +9,7 @@ aux_links:
   Download JAR-Template: <a href="https://github.com/2775Josh/JAR-Template" target="_blank">
 
 plugins:
-  -jekyll-code-tabs
+  -jekyll-tabs
 
 search_enabled: true
 
