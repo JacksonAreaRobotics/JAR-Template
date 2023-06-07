@@ -14,6 +14,7 @@ parent: Docs
       <link rel="stylesheet" href="/assets/custom.css">
     </head>
     <body>
+        <script src="/assets/tabs.js"></script>
 
 {% tabs log %}
 
@@ -60,6 +61,6 @@ hello:
 {% endtabs %}
 
 
-        <script src="/assets/tabs.js"></script>
+        
     </body>
 </html>
