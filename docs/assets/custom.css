@@ -1,48 +1,54 @@
+/* Style the tab */
 .tab {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -20px;
-    padding: 0;
-    list-style: none;
-    position: relative;
+  overflow: hidden;
+  border: 0px solid transparent;
+  background-color: transparent;
 }
 
-.tab > * {
-    flex: none;
-    padding-left: 20px;
-    position: relative;
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: transparent;
+  float: left;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  color: yellow
 }
 
-.tab > * > a {
-    display: block;
-    text-align: center;
-    padding: 9px 20px;
-    color: #999;
-    border-bottom: 2px solid transparent;
-    border-bottom-color: transparent;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: color .1s ease-in-out;
-    line-height: 20px;
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: grey;
+  color: yellow;
 }
 
-.tab > .active > a {
-    color:#787;
-    border-color: #1e87f0;
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000000;
+  color: yellow
 }
 
-.tab > li > a {
-    text-decoration: none;
-    cursor: pointer;
+/* Style the tab content */
+.tabcontent {
+  float: up;
+  display: none;
+  padding: 6px 12px;
+  border: 1px #000000;
+  background-color: #000000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.tab-content {
-    padding: 0;
+.tabcontent {
+  animation: fadeEffect .5s; /* Fading effect takes .5 seconds */
 }
 
-.tab-content > li {
-    display: none;
-}
-.tab-content > li.active {
-    display: initial;
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
