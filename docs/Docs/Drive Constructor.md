@@ -13,10 +13,10 @@ London WallabyQ
 
 <html lang="en-us">
     <head>
-      <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+      <link rel="stylesheet" type="text/css" href="../assets/custom.css">
     </head>
     <body>
-        <script src="/assets/tabs.js"></script>
+<script src="../assets/tabs.js"></script>
 
 <!-- Tab links -->
 <div class="tab">
@@ -41,7 +41,5 @@ London WallabyQ
   <p>Tokyo is the capital of Japan.</p>
 </div>
 
-
-        
     </body>
 </html>
