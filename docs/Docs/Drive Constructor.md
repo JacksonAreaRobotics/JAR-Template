@@ -41,5 +41,7 @@ London WallabyQ
   <p>Tokyo is the capital of Japan.</p>
 </div>
 
+<script src="../assets/tabs.js"></script>
+
     </body>
 </html>
