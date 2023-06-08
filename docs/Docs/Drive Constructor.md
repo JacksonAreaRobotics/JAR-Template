@@ -16,6 +16,7 @@ London WallabyQ
       <link rel="stylesheet" type="text/css" href="/assets/custom.css">
     </head>
     <body>
+        <script src="/assets/tabs.js"></script>
 
 <!-- Tab links -->
 <div class="tab">
@@ -41,6 +42,6 @@ London WallabyQ
 </div>
 
 
-        <script src="/assets/tabs.js"></script>
+        
     </body>
 </html>
