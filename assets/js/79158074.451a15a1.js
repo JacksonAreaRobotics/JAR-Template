@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[9531],{2226:e=>{e.exports=JSON.parse('{"label":"hola","permalink":"/JAR-Template/blog/tags/hola","allTagsPath":"/JAR-Template/blog/tags","count":1}')}}]);
