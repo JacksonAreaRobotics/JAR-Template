@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[6806],{6474:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/JAR-Template/blog/tags/facebook","allTagsPath":"/JAR-Template/blog/tags","count":1}')}}]);
