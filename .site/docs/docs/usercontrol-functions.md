@@ -1,0 +1,122 @@
+---
+sidebar_position: 2
+sidebar_label: Usercontrol Functions
+title: Usercontrol Functions
+---
+
+JAR Template provides a quick setup for arcade and tank control for tank drive robots. More complex driver functions, such as holonomic and power scaling are not included, nor are functions to map controller input to motor output.
+
+## control_arcade();
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  groupId="zero_tracker"
+  defaultValue="proto"
+  values={[
+    { label: 'Prototype',  value: 'proto', },
+    { label: 'Example',  value: 'example', },
+  ]
+}>
+
+<TabItem value="example">
+
+```cpp
+void usercontrol(void) {
+  // User control code here, inside the loop
+  while (1) {
+    // This is the main execution loop for the user control program.
+    // Each time through the loop your program should update motor + servo
+    // values based on feedback from the joysticks.
+
+    // ........................................................................
+    // Insert user code here. This is where you use the joystick values to
+    // update your motors, etc.
+    // ........................................................................
+    if(Controller1.ButtonL1.pressing()){
+      Lift.spin(fwd, 100, percent);
+    }else if(Controller1.ButtonL2.pressing()){
+      Lift.spin(reverse, 100, percent);
+    }else{
+      Lift.stop(hold);
+    }
+
+    //Replace this line with chassis.control_tank(); for tank drive.
+    chassis.control_arcade();
+
+    wait(20, msec); // Sleep the task for a short amount of time to
+                    // prevent wasted resources.
+  }
+}
+```
+
+</TabItem>
+
+
+<TabItem value="proto">
+
+```cpp
+void Drive::control_arcade();
+```
+
+</TabItem>
+</Tabs>
+
+In JAR Template arcade, the left joystick controls forward/backward movement, and the right joystick controls turning. 
+
+
+## control_tank();
+
+
+<Tabs
+  groupId="zero_tracker"
+  defaultValue="proto"
+  values={[
+    { label: 'Prototype',  value: 'proto', },
+    { label: 'Example',  value: 'example', },
+  ]
+}>
+
+<TabItem value="example">
+
+```cpp
+void usercontrol(void) {
+  // User control code here, inside the loop
+  while (1) {
+    // This is the main execution loop for the user control program.
+    // Each time through the loop your program should update motor + servo
+    // values based on feedback from the joysticks.
+
+    // ........................................................................
+    // Insert user code here. This is where you use the joystick values to
+    // update your motors, etc.
+    // ........................................................................
+    if(Controller1.ButtonL1.pressing()){
+      Lift.spin(fwd, 100, percent);
+    }else if(Controller1.ButtonL2.pressing()){
+      Lift.spin(reverse, 100, percent);
+    }else{
+      Lift.stop(hold);
+    }
+
+    //Replace this line with chassis.control_tank(); for tank drive.
+    chassis.control_tank();
+
+    wait(20, msec); // Sleep the task for a short amount of time to
+                    // prevent wasted resources.
+  }
+}
+```
+
+</TabItem>
+
+
+<TabItem value="proto">
+
+```cpp
+void Drive::control_tank();
+```
+
+</TabItem>
+</Tabs>
