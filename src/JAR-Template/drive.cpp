@@ -24,8 +24,8 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   E_ForwardTracker(ThreeWire.Port[to_port(ForwardTracker_port)]),
   E_SidewaysTracker(ThreeWire.Port[to_port(SidewaysTracker_port)])
 {
-  if (drive_setup != ZERO_TRACKER){
-    if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){
+  if (drive_setup != ZERO_TRACKER_NO_ODOM){
+    if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION || drive_setup == ZERO_TRACKER_ODOM){
       odom.set_physical_distances(ForwardTracker_center_distance, 0);
     } else {
       odom.set_physical_distances(ForwardTracker_center_distance, SidewaysTracker_center_distance);
@@ -206,6 +206,9 @@ void Drive::right_swing_to_angle(float angle, float swing_max_voltage, float swi
 }
 
 float Drive::get_ForwardTracker_position(){
+  if (drive_setup==ZERO_TRACKER_ODOM){
+    return(get_right_position_in());
+  }
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(E_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }else{
@@ -214,7 +217,7 @@ float Drive::get_ForwardTracker_position(){
 }
 
 float Drive::get_SidewaysTracker_position(){
-  if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION){
+  if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION || drive_setup == ZERO_TRACKER_ODOM){
     return(0);
   }else if (drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(E_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
