@@ -4,9 +4,11 @@ A simple and powerful VexCode library featuring PID, odometry, and custom motion
 ## Installation
 1. Download the project by downloading the .zip file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
-2. Import the project in VexCode by choosing "Import" from the file menu and selecting the .zip file you downloaded.
+2. Extract the zipped file (perhaps to a folder such as documents, or vexcode-projects).
 
-3. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
+3. Open the project in VexCode by choosing "Open" (not "Import") from the file menu and selecting the JAR-Template.v5code file.
+
+4. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
 
 ## Usage
 1. To make a new auton function, you must both write the function in autons.cpp and a declaration of the function in autons.h. The example autons show how this can be done. 
