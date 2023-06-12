@@ -1,16 +1,12 @@
 # JAR-Template
 A simple and powerful VexCode library featuring PID, odometry, and custom motion algorithms. 
 
-Google Forms link for feedback/suggestions: https://forms.gle/2m4VwJZByn6h2DB58
-
 ## Installation
 1. Download the project by downloading the .zip file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
-2. Extract the zipped file (perhaps to a folder such as documents, or vexcode-projects).
+2. Import the project in VexCode by choosing "Import" from the file menu and selecting the .zip file you downloaded.
 
-3. Open the project in VexCode by choosing "Open" (not "Import") from the file menu and selecting the JAR-Template.v5code file.
-
-4. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
+3. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
 
 ## Usage
 1. To make a new auton function, you must both write the function in autons.cpp and a declaration of the function in autons.h. The example autons show how this can be done. 
@@ -19,5 +15,3 @@ Google Forms link for feedback/suggestions: https://forms.gle/2m4VwJZByn6h2DB58
 4. You can use a multitude of functions to control your drivebase. Every function will be prefixed with "chassis." and followed by the function name. If you want to drive to the point (36,36), then call the method "chassis.drive_to_point(36, 36);".
 
 Developed by Josh, from 2775V of Jackson Area Robotics. Big thanks to Javier, Mikey, Ryan, Leo, JerryLum, and Nick (QUEEN) from VTOW and JPearman from the Vex Forum, whose assistance made this project possible.
-
-Thank you to Beta tester 9421R.
