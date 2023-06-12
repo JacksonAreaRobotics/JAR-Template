@@ -1,8 +1,6 @@
 # JAR-Template
 A simple and powerful VexCode library featuring PID, odometry, and custom motion algorithms. 
 
-Google Forms link for feedback/suggestions: https://forms.gle/2m4VwJZByn6h2DB58
-
 ## Installation
 1. Download the project by downloading the .zip file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
@@ -19,5 +17,3 @@ Google Forms link for feedback/suggestions: https://forms.gle/2m4VwJZByn6h2DB58
 4. You can use a multitude of functions to control your drivebase. Every function will be prefixed with "chassis." and followed by the function name. If you want to drive to the point (36,36), then call the method "chassis.drive_to_point(36, 36);".
 
 Developed by Josh, from 2775V of Jackson Area Robotics. Big thanks to Javier, Mikey, Ryan, Leo, JerryLum, and Nick (QUEEN) from VTOW and JPearman from the Vex Forum, whose assistance made this project possible.
-
-Thank you to Beta tester 9421R.
