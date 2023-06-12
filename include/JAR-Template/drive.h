@@ -19,7 +19,7 @@ private:
   vex:: triport ThreeWire = vex::triport(vex::PORT22);
 
 public: 
-  drive_setup drive_setup = ZERO_TRACKER;
+  drive_setup drive_setup = ZERO_TRACKER_NO_ODOM;
   motor_group DriveL;
   motor_group DriveR;
   inertial Gyro;
@@ -109,6 +109,7 @@ public:
   float get_ForwardTracker_position();
   float get_SidewaysTracker_position();
   void set_coordinates(float X_position, float Y_position, float orientation_deg);
+  void set_heading(float orientation_deg);
   void position_track();
   static int position_track_task();
   vex::task odom_task;

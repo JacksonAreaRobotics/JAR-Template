@@ -233,8 +233,13 @@ void Drive::position_track(){
   }
 }
 
+void Drive::set_heading(float orientation_deg){
+  Gyro.setRotation(orientation_deg*gyro_scale/360.0, deg);
+}
+
 void Drive::set_coordinates(float X_position, float Y_position, float orientation_deg){
   odom.set_position(X_position, Y_position, orientation_deg, get_ForwardTracker_position(), get_SidewaysTracker_position());
+  set_heading(orientation_deg);
 }
 
 int Drive::position_track_task(){
