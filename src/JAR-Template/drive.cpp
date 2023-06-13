@@ -30,8 +30,6 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
     } else {
       odom.set_physical_distances(ForwardTracker_center_distance, SidewaysTracker_center_distance);
     }
-    odom_task = task(position_track_task);
-    set_coordinates(0,0,0);
   }
 }
 
@@ -99,7 +97,7 @@ float Drive::get_left_position_in(){
 }
 
 float Drive::get_right_position_in(){
-  return( DriveL.position(deg)*drive_in_to_deg_ratio );
+  return( DriveR.position(deg)*drive_in_to_deg_ratio );
 }
 
 void Drive::turn_to_angle(float angle){
@@ -240,11 +238,7 @@ void Drive::set_heading(float orientation_deg){
 void Drive::set_coordinates(float X_position, float Y_position, float orientation_deg){
   odom.set_position(X_position, Y_position, orientation_deg, get_ForwardTracker_position(), get_SidewaysTracker_position());
   set_heading(orientation_deg);
-}
-
-int Drive::position_track_task(){
-  chassis.position_track();
-  return(0);
+  odom_task = task(position_track_task);
 }
 
 float Drive::get_X_position(){
@@ -368,4 +362,9 @@ void Drive::control_arcade(){
 void Drive::control_tank(){
   DriveL.spin(fwd, to_volt(controller(primary).Axis3.value()), volt);
   DriveR.spin(fwd, to_volt(controller(primary).Axis2.value()), volt);
+}
+
+int Drive::position_track_task(){
+  chassis.position_track();
+  return(0);
 }

@@ -22,7 +22,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="turn"
   defaultValue="proto1"
   values={[
     { label: 'Basic Prototype',  value: 'proto1', },
@@ -90,7 +90,7 @@ In JAR Template, turns are *field-centric*, meaning that using ```chassis.turn_t
 ### drive_distance();
 
 <Tabs
-groupId="zero_tracker"
+groupId="drive"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },
@@ -156,7 +156,7 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
 ### left_swing_to_angle();
 
 <Tabs
-groupId="zero_tracker"
+groupId="leftswing"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },
@@ -221,7 +221,7 @@ void Drive::left_swing_to_angle(float angle, float swing_max_voltage, float swin
 ### right_swing_to_angle();
 
 <Tabs
-groupId="zero_tracker"
+groupId="rightswing"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },
@@ -287,7 +287,7 @@ void Drive::right_swing_to_angle(float angle, float swing_max_voltage, float swi
 ### drive_to_point();
 
 <Tabs
-groupId="zero_tracker"
+groupId="drivepoint"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },
@@ -352,7 +352,7 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
 ### turn_to_point();
 
 <Tabs
-groupId="zero_tracker"
+groupId="turnpoint"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },
@@ -422,7 +422,7 @@ void Drive::turn_to_point(float X_position, float Y_position, float extra_angle_
 ### holonomic_drive_to_point();
 
 <Tabs
-groupId="zero_tracker"
+groupId="holodrive"
 defaultValue="proto1"
 values={[
 { label: 'Basic Prototype',  value: 'proto1', },

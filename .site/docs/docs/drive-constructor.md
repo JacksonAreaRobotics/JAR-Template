@@ -129,7 +129,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
 
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="tank_one_encoder"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -236,7 +236,7 @@ Typically, this odometry style is used when a tank drive has locked omni wheels.
 Typically, this odometry style is used when a tank drive has locked omni wheels. The tracking wheel must be parallel to the direction of travel, and therefore only the constants for the Forward Tracker must be edited from their original state. Note that the tracker port must be edited to be in "PORT1" format.
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="tank_one_rotation"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -343,7 +343,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
 These tracking wheels must be perpendicular to each other. The Forward Tracker is parallel to the direction of travel, and the Sideways Tracker is perpendicular to the direction of travel. See the note above about optical encoder wiring.
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="tank_two_encoder"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -452,7 +452,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
 These tracking wheels must be perpendicular to each other. The Forward Tracker is parallel to the direction of travel, and the Sideways Tracker is perpendicular to the direction of travel. Remember to put the Forward and Sideways Tracker ports in "PORT1" format.
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="tank_two_rotation"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -559,7 +559,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
 This setup only works with a four motor X-Drive or mecanum drive. These tracking wheels must be perpendicular to each other. The Forward Tracker is parallel to the direction of travel, and the Sideways Tracker is perpendicular to the direction of travel. See the note above about optical encoder wiring.
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="holonomic_two_encoder"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -666,7 +666,7 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
 This setup only works with a four motor X-Drive or mecanum drive. These tracking wheels must be perpendicular to each other. The Forward Tracker is parallel to the direction of travel, and the Sideways Tracker is perpendicular to the direction of travel. Remember to put the Forward and Sideways Tracker ports in "PORT1" format.
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="holonomic_two_rotation"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },

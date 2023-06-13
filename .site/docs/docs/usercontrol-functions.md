@@ -12,7 +12,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="arcade"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
@@ -70,7 +70,7 @@ In JAR Template arcade, the left joystick controls forward/backward movement, an
 
 
 <Tabs
-  groupId="zero_tracker"
+  groupId="tank"
   defaultValue="proto"
   values={[
     { label: 'Prototype',  value: 'proto', },
