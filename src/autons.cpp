@@ -10,6 +10,12 @@ void default_constants(){
   chassis.set_swing_exit_conditions(1, 300, 3000);
 }
 
+void odom_constants(){
+  default_constants();
+  chassis.drive_max_voltage = 8;
+  chassis.drive_settle_error = 3;
+}
+
 void drive_test(){
   chassis.drive_distance(6);
   chassis.drive_distance(12);
@@ -53,15 +59,16 @@ void odom_test(){
 }
 
 void tank_odom_test(){
+  odom_constants();
   chassis.set_coordinates(0, 0, 0);
-  chassis.drive_to_point(6, 18);
-  chassis.turn_to_point(12,0, 180);
-  chassis.drive_to_point(12, 0);
-  chassis.turn_to_angle(100);
-  chassis.drive_to_point(0, 0);
+  chassis.turn_to_point(24, 24);
+  chassis.drive_to_point(24,24);
+  chassis.drive_to_point(0,0);
+  chassis.turn_to_angle(0);
 }
 
 void holonomic_odom_test(){
+  odom_constants();
   chassis.set_coordinates(0, 0, 0);
   chassis.holonomic_drive_to_point(0, 18, 90);
   chassis.holonomic_drive_to_point(18, 0, 180);

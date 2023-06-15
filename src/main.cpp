@@ -60,10 +60,9 @@ PORT1,
 /*  they are.                                                                */
 /*---------------------------------------------------------------------------*/
 
-//PAUSE! The rest of the drive constructor is for robot using POSITION TRACKING.
-//If you are not using position tracking, leave the rest of the values as they are.
+//If you are using ZERO_TRACKER_ODOM, you ONLY need to adjust the FORWARD TRACKER CENTER DISTANCE.
 
-//Input your drive motors by position. This is only necessary for holonomic drives, otherwise this section can be left alone.
+//FOR HOLONOMIC DRIVES ONLY: Input your drive motors by position. This is only necessary for holonomic drives, otherwise this section can be left alone.
 //LF:      //RF:    
 PORT1,     -PORT2,
 
@@ -71,7 +70,7 @@ PORT1,     -PORT2,
 PORT3,     -PORT4,
 
 //If you are using position tracking, this is the Forward Tracker port (the tracker which runs parallel to the direction of the chassis).
-//If this is a rotation sensor, leave it in "PORT1" format, inputting the port below.
+//If this is a rotation sensor, enter it in "PORT1" format, inputting the port below.
 //If this is an encoder, enter the port as an integer. Triport A will be a "1", Triport B will be a "2", etc.
 3,
 
@@ -79,7 +78,7 @@ PORT3,     -PORT4,
 2.75,
 
 //Input Forward Tracker center distance (a positive distance corresponds to a tracker on the right side of the robot, negative is left.)
-//For a zero tracker tank drive with odom, put the distance from the center of the robot to the right side of the drive.
+//For a zero tracker tank drive with odom, put the positive distance from the center of the robot to the right side of the drive.
 //This distance is in inches:
 -2,
 
@@ -94,16 +93,6 @@ PORT3,     -PORT4,
 
 );
 
-/*---------------------------------------------------------------------------*/
-/*                          Pre-Autonomous Functions                         */
-/*                                                                           */
-/*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following function.  You must return from this function   */
-/*  or the autonomous and usercontrol tasks will not be started.  This       */
-/*  function is only called once after the V5 has been powered on and        */
-/*  not every time that the robot is disabled.                               */
-/*---------------------------------------------------------------------------*/
-
 int current_auton_selection = 0;
 bool auto_started = false;
 
@@ -112,9 +101,9 @@ void pre_auton(void) {
   vexcodeInit();
   default_constants();
 
-  while(auto_started == false){
-    Brain.Screen.clearScreen();
-    switch(current_auton_selection){
+  while(auto_started == false){            //Changing the names below will only change their names on the
+    Brain.Screen.clearScreen();            //brain screen for auton selection.
+    switch(current_auton_selection){       //Tap the brain screen to cycle through autons.
       case 0:
         Brain.Screen.printAt(50, 50, "Drive Test");
         break;
@@ -155,8 +144,8 @@ void autonomous(void) {
   switch(current_auton_selection){  
     case 0:
       drive_test(); //This is the default auton, if you don't select from the brain.
-      break;
-    case 1:
+      break;        //Change these to be your own auton functions in order to use the auton selector.
+    case 1:         //Tap the screen to cycle through autons.
       drive_test();
       break;
     case 2:
@@ -202,7 +191,8 @@ void usercontrol(void) {
     // update your motors, etc.
     // ........................................................................
 
-    //Replace this line with chassis.control_tank(); for tank drive.
+    //Replace this line with chassis.control_tank(); for tank drive 
+    //or chassis.control_holonomic(); for holo drive.
     chassis.control_arcade();
 
     wait(20, msec); // Sleep the task for a short amount of time to
