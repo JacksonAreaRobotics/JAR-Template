@@ -58,5 +58,5 @@ float deadband(float input, float width){
   if (fabs(input)<width){
     return(0);
   }
-  return(input)
+  return(input);
 }
