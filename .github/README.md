@@ -8,6 +8,8 @@ A simple and powerful VexCode library featuring PID, odometry, and custom motion
 
 3. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
 
+4. Check out the [documentation](https://jacksonarearobotics.github.io/JAR-Template/) for more detailed tutorials and information on using the template.
+
 ## Usage
 1. To make a new auton function, you must both write the function in autons.cpp and a declaration of the function in autons.h. The example autons show how this can be done. 
 2. In order to select autons from the Brain, you must add each to the pre_auton loop and the autonomous function, both in main.cpp. Again, the example autons show how to do this.
