@@ -23,7 +23,7 @@ competition Competition;
 
 Drive chassis(
 
-//Specify your drive setup below. There are seven options:
+//Specify your drive setup below. There are eight options:
 //ZERO_TRACKER_NO_ODOM, ZERO_TRACKER_ODOM, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, and HOLONOMIC_TWO_ROTATION
 //For example, if you are not using odometry, put ZERO_TRACKER_NO_ODOM below:
 ZERO_TRACKER_NO_ODOM,
