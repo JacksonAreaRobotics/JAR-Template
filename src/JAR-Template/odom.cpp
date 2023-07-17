@@ -14,6 +14,7 @@ void Odom::set_position(float X_position, float Y_position, float orientation_de
 }
 
 void Odom::update_position(float ForwardTracker_position, float SidewaysTracker_position, float orientation_deg){
+  // this-> always refers to the old version of the variable, so subtracting this->x from x gives delta x.
   float Forward_delta = ForwardTracker_position-this->ForwardTracker_position;
   float Sideways_delta = SidewaysTracker_position-this->SideWaysTracker_position;
   this->ForwardTracker_position=ForwardTracker_position;
@@ -25,6 +26,9 @@ void Odom::update_position(float ForwardTracker_position, float SidewaysTracker_
 
   float local_X_position;
   float local_Y_position;
+
+  // All of the following lines are pretty well documented in 5225A's Into to Position Tracking 
+  // Document at http://thepilons.ca/wp-content/uploads/2018/10/Tracking.pdf 
 
   if (orientation_delta_rad == 0) {
     local_X_position = Sideways_delta;

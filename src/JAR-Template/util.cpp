@@ -1,5 +1,9 @@
 #include "vex.h"
 
+// There is probably a more efficient way to reduce angles than the ones specified below,
+// but these work without question, and you really only have to reduce them once or twice at 
+// a max.
+
 float reduce_0_to_360(float angle) {
   while(!(angle >= 0 && angle < 360)) {
     if( angle < 0 ) { angle += 360; }
@@ -52,7 +56,7 @@ int to_port(int port){
     return(0);
   }
   return(port-1);
-}
+} // To_port just keeps a number over 7 from being passed as a threewire port.
 
 float deadband(float input, float width){
   if (fabs(input)<width){

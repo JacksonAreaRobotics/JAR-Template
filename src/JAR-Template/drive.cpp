@@ -14,7 +14,9 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   drive_setup(drive_setup),
   DriveL(DriveL),
   DriveR(DriveR),
-  Gyro(inertial(gyro_port)),
+  //Every device below is passed by port rather than passing the object.
+  //This ensures that the devices work properly.
+  Gyro(inertial(gyro_port)), 
   DriveLF(DriveLF_port, is_reversed(DriveLF_port)),
   DriveRF(DriveRF_port, is_reversed(DriveRF_port)),
   DriveLB(DriveLB_port, is_reversed(DriveLB_port)),
@@ -27,6 +29,9 @@ Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group Driv
   if (drive_setup != ZERO_TRACKER_NO_ODOM){
     if (drive_setup == TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION || drive_setup == ZERO_TRACKER_ODOM){
       odom.set_physical_distances(ForwardTracker_center_distance, 0);
+      // Setting the sideways distance to 0 essentially tells the robot that there is a sideways tracker
+      // in the center of the robot that never moves. Even though the tracker isn't really there, the odom
+      // still works fine.
     } else {
       odom.set_physical_distances(ForwardTracker_center_distance, SidewaysTracker_center_distance);
     }
@@ -37,6 +42,10 @@ void Drive::drive_with_voltage(float leftVoltage, float rightVoltage){
   DriveL.spin(fwd, leftVoltage, volt);
   DriveR.spin(fwd, rightVoltage,volt);
 }
+
+// All PID constants are passed as kP, kI, kD, and startI. The kP, kI, and kD are pretty standard,
+// but startI keeps the integral value at 0 until the absolute value of the error is below startI.
+// This prevents integral windup on bigger turns.
 
 void Drive::set_turn_constants(float turn_max_voltage, float turn_kp, float turn_ki, float turn_kd, float turn_starti){
   this->turn_max_voltage = turn_max_voltage;
@@ -69,6 +78,11 @@ void Drive::set_swing_constants(float swing_max_voltage, float swing_kp, float s
   this->swing_kd = swing_kd;
   this->swing_starti = swing_starti;
 } 
+
+// Settle error and settle time work together to check whether the desired position was achieved, but
+// timeout is separate. The robot must stay within the settle error for the duration of the settle time 
+// to be settled. If the duration of the movement reaches timeout without being settled, the robot
+// gives up and goes to the next movement. 
 
 void Drive::set_turn_exit_conditions(float turn_settle_error, float turn_settle_time, float turn_timeout){
   this->turn_settle_error = turn_settle_error;
@@ -114,9 +128,13 @@ void Drive::turn_to_angle(float angle, float turn_max_voltage, float turn_settle
 
 void Drive::turn_to_angle(float angle, float turn_max_voltage, float turn_settle_error, float turn_settle_time, float turn_timeout, float turn_kp, float turn_ki, float turn_kd, float turn_starti){
   desired_heading = angle;
+  // Desired heading carries over the angle from one movement to another. That way, if the robot doesn't
+  // finish a turn movement, it will still drive at the angle that was specified in the turn movement.
   PID turnPID(reduce_negative_180_to_180(angle - get_absolute_heading()), turn_kp, turn_ki, turn_kd, turn_starti, turn_settle_error, turn_settle_time, turn_timeout);
   while(turnPID.is_settled() == false){
     float error = reduce_negative_180_to_180(angle - get_absolute_heading());
+    // Reducing the angle to a value between -180 and 180 degrees ensures that the robot always takes the 
+    // shorter path when making a turn.
     float output = turnPID.compute(error);
     output = clamp(output, -turn_max_voltage, turn_max_voltage);
     drive_with_voltage(output, -output);
@@ -147,11 +165,15 @@ void Drive::drive_distance(float distance, float heading, float drive_max_voltag
   PID drivePID(distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
   PID headingPID(reduce_negative_180_to_180(heading - get_absolute_heading()), heading_kp, heading_ki, heading_kd, heading_starti);
   float start_average_position = (get_left_position_in()+get_right_position_in())/2.0;
+  // Rather than resetting the drive position , this function just notes what the drive position started at
+  // and determines error relative to that value.
   float average_position = start_average_position;
   while(drivePID.is_settled() == false){
     average_position = (get_left_position_in()+get_right_position_in())/2.0;
     float drive_error = distance+start_average_position-average_position;
     float heading_error = reduce_negative_180_to_180(heading - get_absolute_heading());
+    // Just like for turns, reducing from -180 to 180 degrees ensures that the robot takes the 
+    // quickest path to the desired heading.
     float drive_output = drivePID.compute(drive_error);
     float heading_output = headingPID.compute(heading_error);
 
@@ -175,8 +197,9 @@ void Drive::left_swing_to_angle(float angle, float swing_max_voltage, float swin
   while(swingPID.is_settled() == false){
     float error = reduce_negative_180_to_180(angle - get_absolute_heading());
     float output = swingPID.compute(error);
-    output = clamp(output, -turn_max_voltage, turn_max_voltage);
+    output = clamp(output, -swing_max_voltage, swing_max_voltage);
     DriveL.spin(fwd, output, volt);
+    //Only the left side of the drive turns, making this a "left swing".
     DriveR.stop(hold);
     task::sleep(10);
   }
@@ -194,8 +217,9 @@ void Drive::right_swing_to_angle(float angle, float swing_max_voltage, float swi
   while(swingPID.is_settled() == false){
     float error = reduce_negative_180_to_180(angle - get_absolute_heading());
     float output = swingPID.compute(error);
-    output = clamp(output, -turn_max_voltage, turn_max_voltage);
+    output = clamp(output, -swing_max_voltage, swing_max_voltage);
     DriveR.spin(reverse, output, volt);
+    //Only the right side of the drive turns, so this is a "right swing".
     DriveL.stop(hold);
     task::sleep(10);
   }
@@ -205,11 +229,13 @@ void Drive::right_swing_to_angle(float angle, float swing_max_voltage, float swi
 
 float Drive::get_ForwardTracker_position(){
   if (drive_setup==ZERO_TRACKER_ODOM){
+    // For zero tracker odom, the right side of the drive becomes the tracker.
     return(get_right_position_in());
   }
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(E_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }else{
+    // This if-else just discriminates based on whether the sensor is an encoder or rotation sensor.
     return(R_ForwardTracker.position(deg)*ForwardTracker_in_to_deg_ratio);
   }
 }
@@ -217,6 +243,7 @@ float Drive::get_ForwardTracker_position(){
 float Drive::get_SidewaysTracker_position(){
   if (drive_setup==TANK_ONE_ENCODER || drive_setup == TANK_ONE_ROTATION || drive_setup == ZERO_TRACKER_ODOM){
     return(0);
+    // These setups all pretend that there is a sideways tracker  in the center that just never moves.
   }else if (drive_setup == TANK_TWO_ENCODER || drive_setup == HOLONOMIC_TWO_ENCODER){
     return(E_SidewaysTracker.position(deg)*SidewaysTracker_in_to_deg_ratio);
   }else{
@@ -266,15 +293,23 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
   PID headingPID(reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading()), heading_kp, heading_ki, heading_kd, heading_starti);
   while(drivePID.is_settled() == false){
     float drive_error = hypot(X_position-get_X_position(),Y_position-get_Y_position());
+    // The drive error is just equal to the distance between the current and desired points.
     float heading_error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading());
+    // This uses atan2(x,y) rather than atan2(y,x) because doing so places 0 degrees on the positive Y axis.
     float drive_output = drivePID.compute(drive_error);
 
     float heading_scale_factor = cos(to_rad(heading_error));
     drive_output*=heading_scale_factor;
+    // The scale factor slows the drive down the more it's facing away from the desired point,
+    // and that way the heading correction has time to catch up.
     heading_error = reduce_negative_90_to_90(heading_error);
+    // Here we reduce -90 to 90 because this allows the robot to travel backwards if it's easier
+    // to do so.
     float heading_output = headingPID.compute(heading_error);
     
     if (drive_error<drive_settle_error) { heading_output = 0; }
+    // This if statement prevents the heading correction from acting up after the robot gets close
+    // to being settled.
 
     drive_output = clamp(drive_output, -fabs(heading_scale_factor)*drive_max_voltage, fabs(heading_scale_factor)*drive_max_voltage);
     heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
@@ -303,6 +338,7 @@ void Drive::turn_to_point(float X_position, float Y_position, float extra_angle_
   PID turnPID(reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position())) - get_absolute_heading()), turn_kp, turn_ki, turn_kd, turn_starti, turn_settle_error, turn_settle_time, turn_timeout);
   while(turnPID.is_settled() == false){
     float error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position())) - get_absolute_heading() + extra_angle_deg);
+    // Again, using atan2(x,y) puts 0 degrees on the positive Y axis.
     float output = turnPID.compute(error);
     output = clamp(output, -turn_max_voltage, turn_max_voltage);
     drive_with_voltage(output, -output);
@@ -349,6 +385,7 @@ void Drive::holonomic_drive_to_point(float X_position, float Y_position, float a
     DriveLB.spin(fwd, drive_output*cos(-to_rad(get_absolute_heading()) - heading_error + 3*M_PI/4) + turn_output, volt);
     DriveRB.spin(fwd, drive_output*cos(to_rad(get_absolute_heading()) + heading_error - M_PI/4) - turn_output, volt);
     DriveRF.spin(fwd, drive_output*cos(-to_rad(get_absolute_heading()) - heading_error + 3*M_PI/4) - turn_output, volt);
+    //These scalings on the drive output ensure that the drive always goes toward the desired point.
     task::sleep(10);
   }
   DriveLF.stop(hold);
@@ -356,6 +393,9 @@ void Drive::holonomic_drive_to_point(float X_position, float Y_position, float a
   DriveRB.stop(hold);
   DriveRF.stop(hold);
 }
+
+// The usercontrol functions use deadband=5 everywhere. This value pretty much gets the job done,
+// but it can be changed with no repercussions.
 
 void Drive::control_arcade(){
   float throttle = deadband(controller(primary).Axis3.value(), 5);
