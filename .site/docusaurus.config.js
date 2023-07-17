@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://2775Josh.github.io',
+  url: 'https://JacksonAreaRobotics.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/JAR-Template/',
@@ -19,7 +19,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: '2775Josh', // Usually your GitHub org/user name.
+  organizationName: 'JacksonAreaRobotics', // Usually your GitHub org/user name.
   projectName: 'JAR-Template', // Usually your repo name.
 
   onBrokenLinks: 'ignore',
@@ -67,13 +67,7 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
-            href: 'https://github.com/2775Josh/JAR-Template',
+            href: 'https://github.com/JacksonAreaRobotics/JAR-Template',
             label: 'GitHub',
             position: 'right',
           },
@@ -83,29 +77,33 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Docs',
+                to: '/docs',
               },
+              {
+                label: 'Basic Tutorials',
+                to: '/basic-tutorials',
+              },
+              {
+                label: 'Advanced Tutorials',
+                to: '/advanced-tutorials',
+              }
             ],
           },
           {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Vex Forum',
+                href: 'https://www.vexforum.com/',
               },
               {
                 label: 'VRC Discord Server',
                 href: 'https://discord.com/invite/vrc',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+              }
             ],
           },
           {
@@ -113,8 +111,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/2775Josh/JAR-Template',
+                href: 'https://github.com/JacksonAreaRobotics/JAR-Template',
               },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/channel/UCxpfFq6ShDvgmU9P4y6rc_Q',
+              }
             ],
           },
         ],
