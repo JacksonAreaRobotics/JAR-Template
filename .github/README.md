@@ -1,5 +1,5 @@
 # JAR-Template
-A simple and powerful VexCode Pro V5 library featuring PID, odometry, and custom motion algorithms. 
+A simple and powerful VexCode Pro V5 library featuring PID, odometry, and custom motion algorithms. (short for Jackson Area Robotics Template)
 
 ## Installation
 1. Download the project by downloading the "JAR-Template.zip" file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
