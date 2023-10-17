@@ -1,5 +1,6 @@
 #pragma once
 #include "vex.h"
+#include <vector>
 
 enum drive_setup {ZERO_TRACKER_NO_ODOM, ZERO_TRACKER_ODOM, TANK_ONE_ENCODER, TANK_ONE_ROTATION, TANK_TWO_ENCODER, TANK_TWO_ROTATION, HOLONOMIC_TWO_ENCODER, HOLONOMIC_TWO_ROTATION};
 
@@ -115,6 +116,7 @@ public:
   vex::task odom_task;
   float get_X_position();
   float get_Y_position();
+  Point get_position();
 
   void drive_to_point(float X_position, float Y_position);
   void drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage);
@@ -131,6 +133,8 @@ public:
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage);
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout);
   void holonomic_drive_to_point(float X_position, float Y_position, float angle, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti);
+
+  void follow_path(std::vector<Point>, float lookahead_distance);
 
   void control_arcade();
   void control_tank();
