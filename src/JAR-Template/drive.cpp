@@ -335,7 +335,7 @@ void Drive::follow_path(std::vector<Point> path, float lookahead_distance){
 	// Add current position to the start of the path so that intersections can be found initially, even if the robot is off the path.
   path.insert(path.begin(), odom.position);
   
-  Point target_intersection; // The point on the path that we should target with PID.
+  Point target_intersection = odom.position; // The point on the path that we should target with PID.
 
 	// Loop through all waypoints in the provided path.
   for (int i = 0; i < (path.size() - 1); i++) {
