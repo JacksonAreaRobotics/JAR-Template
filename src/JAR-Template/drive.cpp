@@ -1,4 +1,5 @@
 #include "vex.h"
+#include <vector>
 
 Drive::Drive(enum::drive_setup drive_setup, motor_group DriveL, motor_group DriveR, int gyro_port, float wheel_diameter, float wheel_ratio, float gyro_scale, int DriveLF_port, int DriveRF_port, int DriveLB_port, int DriveRB_port, int ForwardTracker_port, float ForwardTracker_diameter, float ForwardTracker_center_distance, int SidewaysTracker_port, float SidewaysTracker_diameter, float SidewaysTracker_center_distance) :
   wheel_diameter(wheel_diameter),
@@ -263,18 +264,23 @@ void Drive::set_heading(float orientation_deg){
 }
 
 void Drive::set_coordinates(float X_position, float Y_position, float orientation_deg){
-  odom.set_position(X_position, Y_position, orientation_deg, get_ForwardTracker_position(), get_SidewaysTracker_position());
+  odom.set_position(Point {X_position, Y_position}, orientation_deg, get_ForwardTracker_position(), get_SidewaysTracker_position());
   set_heading(orientation_deg);
   odom_task = task(position_track_task);
 }
 
+Point Drive::get_position() {
+  return odom.position;
+}
+
 float Drive::get_X_position(){
-  return(odom.X_position);
+  return odom.position.x;
 }
 
 float Drive::get_Y_position(){
-  return(odom.Y_position);
+  return odom.position.y;
 }
+
 
 void Drive::drive_to_point(float X_position, float Y_position){
   drive_to_point(X_position, Y_position, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
@@ -317,6 +323,64 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
     drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
     task::sleep(10);
   }
+  desired_heading = get_absolute_heading();
+  DriveL.stop(hold);
+  DriveR.stop(hold);
+}
+
+void Drive::follow_path(std::vector<Point> path, float lookahead_distance){
+  PID drivePID(0, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
+  PID headingPID(0, heading_kp, heading_ki, heading_kd, heading_starti);
+
+	// Add current position to the start of the path so that intersections can be found initially, even if the robot is off the path.
+  path.insert(path.begin(), odom.position);
+  
+  Point target_intersection = odom.position; // The point on the path that we should target with PID.
+
+	// Loop through all waypoints in the provided path.
+  for (int i = 0; i < (path.size() - 1); i++) {
+    Point start = path[i]; // The current waypoint
+    Point end = path[i+1]; // The next waypoint
+
+    while (dist(odom.position, end) > lookahead_distance) {
+      // Find the point(s) of intersection between a circle centered around our global position with the radius of our
+			// lookahead distance and a line segment formed between our starting/ending points.
+      // This can be 0-2 points depending on whether there are tangent, secant, or no intersections.
+      std::vector<Point> intersections = line_circle_intersections(odom.position, lookahead_distance, start, end);
+
+			// Choose the best intersection to go to, ensuring that we don't go backwards along the path.
+      if (intersections.size() == 2) {
+				// There are two intersections between our lookahead circle and the path. Find the one closest to the end of the line segment.
+        if (dist(intersections[0], end) < dist(intersections[1], end)) {
+					target_intersection = intersections[0];
+				} else {
+					target_intersection = intersections[1];
+				}
+      } else if (intersections.size() == 1) {
+        // There is one intersection. Go to that intersection.
+				target_intersection = intersections[0];
+      }
+
+      // Move towards the target intersection with PID
+      float drive_error = dist(odom.position, target_intersection);
+      float heading_error = reduce_negative_180_to_180(to_deg(atan2(target_intersection.x-odom.position.x,target_intersection.y-odom.position.y))-get_absolute_heading());
+      float drive_output = drivePID.compute(drive_error);
+
+      float heading_scale_factor = cos(to_rad(heading_error));
+      drive_output*=heading_scale_factor;
+      heading_error = reduce_negative_90_to_90(heading_error);
+      float heading_output = headingPID.compute(heading_error);
+      
+      if (drive_error<drive_settle_error) { heading_output = 0; }
+
+      drive_output = clamp(drive_output, -fabs(heading_scale_factor)*drive_max_voltage, fabs(heading_scale_factor)*drive_max_voltage);
+      heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
+
+      drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
+      task::sleep(10);
+    }
+  }
+  
   desired_heading = get_absolute_heading();
   DriveL.stop(hold);
   DriveR.stop(hold);

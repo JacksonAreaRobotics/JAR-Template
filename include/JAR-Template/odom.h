@@ -1,3 +1,7 @@
+#pragma once
+
+#include "util.h"
+
 class Odom
 {
 private:
@@ -6,10 +10,9 @@ private:
   float ForwardTracker_position;
   float SideWaysTracker_position;
 public:
-  float X_position;
-  float Y_position;
+  Point position;
   float orientation_deg;
-  void set_position(float X_position, float Y_position, float orientation_deg, float ForwardTracker_position, float SidewaysTracker_position);
+  void set_position(Point position, float orientation_deg, float ForwardTracker_position, float SidewaysTracker_position);
   void update_position(float ForwardTracker_position, float SidewaysTracker_position, float orientation_deg);
   void set_physical_distances(float ForwardTracker_center_distance, float SidewaysTracker_center_distance);
 };
