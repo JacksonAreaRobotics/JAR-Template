@@ -1,0 +1,28 @@
+{
+  "unversionedId": "docs/drive-constructor",
+  "id": "docs/drive-constructor",
+  "title": "Drive Constructor",
+  "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
+  "source": "@site/docs/docs/drive-constructor.md",
+  "sourceDirName": "docs",
+  "slug": "/docs/drive-constructor",
+  "permalink": "/JAR-Template/docs/drive-constructor",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Drive Constructor",
+    "title": "Drive Constructor"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docs",
+    "permalink": "/JAR-Template/docs/"
+  },
+  "next": {
+    "title": "Usercontrol Functions",
+    "permalink": "/JAR-Template/docs/usercontrol-functions"
+  }
+}

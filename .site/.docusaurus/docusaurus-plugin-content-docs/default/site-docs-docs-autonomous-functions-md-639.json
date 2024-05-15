@@ -1,0 +1,28 @@
+{
+  "unversionedId": "docs/autonomous-functions",
+  "id": "docs/autonomous-functions",
+  "title": "Autonomous Functions",
+  "description": "JAR Template provides a multitude of ways to control the chassis using PID and odometry.",
+  "source": "@site/docs/docs/autonomous-functions.md",
+  "sourceDirName": "docs",
+  "slug": "/docs/autonomous-functions",
+  "permalink": "/JAR-Template/docs/autonomous-functions",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Autonomous Functions",
+    "title": "Autonomous Functions"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Usercontrol Functions",
+    "permalink": "/JAR-Template/docs/usercontrol-functions"
+  },
+  "next": {
+    "title": "Basic Tutorials",
+    "permalink": "/JAR-Template/basic-tutorials/"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "unversionedId": "advanced-tutorials/advanced-tutorials",
+  "id": "advanced-tutorials/advanced-tutorials",
+  "title": "Advanced Tutorials",
+  "description": "The advanced tutorials assume a basic knowledge of object-oriented C++ and PID control.",
+  "source": "@site/docs/advanced-tutorials/advanced-tutorials.md",
+  "sourceDirName": "advanced-tutorials",
+  "slug": "/advanced-tutorials/",
+  "permalink": "/JAR-Template/advanced-tutorials/",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "sidebar_label": "Advanced Tutorials"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Basic Usage",
+    "permalink": "/JAR-Template/basic-tutorials/basic-usage"
+  },
+  "next": {
+    "title": "Using Drive Member Variables",
+    "permalink": "/JAR-Template/advanced-tutorials/using-drive-member-variables"
+  }
+}

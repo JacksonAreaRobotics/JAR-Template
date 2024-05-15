@@ -1,0 +1,23 @@
+{
+  "unversionedId": "advanced-tutorials/using-drive-member-variables",
+  "id": "advanced-tutorials/using-drive-member-variables",
+  "title": "Using Drive Member Variables",
+  "description": "While coding, it is likely that you will wish to pass different drive constants to the chassis at different times in the run. Here, drive constants just refers to max voltage, kp, ki, kd, etc.",
+  "source": "@site/docs/advanced-tutorials/using-drive-member-variables.md",
+  "sourceDirName": "advanced-tutorials",
+  "slug": "/advanced-tutorials/using-drive-member-variables",
+  "permalink": "/JAR-Template/advanced-tutorials/using-drive-member-variables",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Using Drive Member Variables"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Advanced Tutorials",
+    "permalink": "/JAR-Template/advanced-tutorials/"
+  }
+}

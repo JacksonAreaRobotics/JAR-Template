@@ -1,0 +1,78 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/JAR-Template/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/JAR-Template/",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "advanced-tutorials/advanced-tutorials",
+              "path": "/JAR-Template/advanced-tutorials/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced-tutorials/using-drive-member-variables",
+              "path": "/JAR-Template/advanced-tutorials/using-drive-member-variables",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "basic-tutorials/basic-tutorials",
+              "path": "/JAR-Template/basic-tutorials/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "basic-tutorials/basic-usage",
+              "path": "/JAR-Template/basic-tutorials/basic-usage",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "basic-tutorials/installing-jar-template",
+              "path": "/JAR-Template/basic-tutorials/installing-jar-template",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/autonomous-functions",
+              "path": "/JAR-Template/docs/autonomous-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/docs",
+              "path": "/JAR-Template/docs/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/drive-constructor",
+              "path": "/JAR-Template/docs/drive-constructor",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/usercontrol-functions",
+              "path": "/JAR-Template/docs/usercontrol-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "index",
+              "path": "/JAR-Template/",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/JAR-Template/",
+                "label": "About"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

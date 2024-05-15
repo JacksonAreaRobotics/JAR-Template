@@ -1,0 +1,27 @@
+{
+  "unversionedId": "basic-tutorials/basic-usage",
+  "id": "basic-tutorials/basic-usage",
+  "title": "Basic Usage",
+  "description": "1. To make a new auton function, you must both write the function in autons.cpp and a declaration of the function in autons.h. The example autons show how this can be done.",
+  "source": "@site/docs/basic-tutorials/basic-usage.md",
+  "sourceDirName": "basic-tutorials",
+  "slug": "/basic-tutorials/basic-usage",
+  "permalink": "/JAR-Template/basic-tutorials/basic-usage",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Basic Usage"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing JAR Template",
+    "permalink": "/JAR-Template/basic-tutorials/installing-jar-template"
+  },
+  "next": {
+    "title": "Advanced Tutorials",
+    "permalink": "/JAR-Template/advanced-tutorials/"
+  }
+}

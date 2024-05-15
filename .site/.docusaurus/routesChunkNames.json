@@ -1,0 +1,49 @@
+{
+  "/JAR-Template/-0b4": {
+    "__comp": "1be78505",
+    "__context": {
+      "plugin": "4edaca32"
+    },
+    "versionMetadata": "935f2afb"
+  },
+  "/JAR-Template/-1f0": {
+    "__comp": "17896441",
+    "content": "c377a04b"
+  },
+  "/JAR-Template/advanced-tutorials-df1": {
+    "__comp": "17896441",
+    "content": "c1477aab"
+  },
+  "/JAR-Template/advanced-tutorials/using-drive-member-variables-033": {
+    "__comp": "17896441",
+    "content": "83ba41b1"
+  },
+  "/JAR-Template/basic-tutorials-d5f": {
+    "__comp": "17896441",
+    "content": "741a2760"
+  },
+  "/JAR-Template/basic-tutorials/basic-usage-c43": {
+    "__comp": "17896441",
+    "content": "d945bf92"
+  },
+  "/JAR-Template/basic-tutorials/installing-jar-template-1af": {
+    "__comp": "17896441",
+    "content": "aab331ed"
+  },
+  "/JAR-Template/docs-88d": {
+    "__comp": "17896441",
+    "content": "dcc56147"
+  },
+  "/JAR-Template/docs/autonomous-functions-08d": {
+    "__comp": "17896441",
+    "content": "6392476b"
+  },
+  "/JAR-Template/docs/drive-constructor-25c": {
+    "__comp": "17896441",
+    "content": "2965f1d9"
+  },
+  "/JAR-Template/docs/usercontrol-functions-f79": {
+    "__comp": "17896441",
+    "content": "08ca5002"
+  }
+}

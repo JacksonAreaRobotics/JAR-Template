@@ -1,0 +1,28 @@
+{
+  "unversionedId": "docs/docs",
+  "id": "docs/docs",
+  "title": "Docs",
+  "description": "The docs detail each function available for use in JAR Template. The documentation of each function comes with a prototype and an example. The prototype shows the name, inputs, and outputs to the function, and the examples show how the function can be used in the context of the surrounding code.",
+  "source": "@site/docs/docs/docs.md",
+  "sourceDirName": "docs",
+  "slug": "/docs/",
+  "permalink": "/JAR-Template/docs/",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Docs",
+    "title": "Docs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "About",
+    "permalink": "/JAR-Template/"
+  },
+  "next": {
+    "title": "Drive Constructor",
+    "permalink": "/JAR-Template/docs/drive-constructor"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "docs/usercontrol-functions",
+  "id": "docs/usercontrol-functions",
+  "title": "Usercontrol Functions",
+  "description": "JAR Template provides a quick setup for arcade and tank control for tank drive robots, and holonomic control for holonomic robots. This setup is a quick way to check that each drive port is reversed properly and that the robot drives well.",
+  "source": "@site/docs/docs/usercontrol-functions.md",
+  "sourceDirName": "docs",
+  "slug": "/docs/usercontrol-functions",
+  "permalink": "/JAR-Template/docs/usercontrol-functions",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "sidebar_label": "Usercontrol Functions",
+    "title": "Usercontrol Functions"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Drive Constructor",
+    "permalink": "/JAR-Template/docs/drive-constructor"
+  },
+  "next": {
+    "title": "Autonomous Functions",
+    "permalink": "/JAR-Template/docs/autonomous-functions"
+  }
+}

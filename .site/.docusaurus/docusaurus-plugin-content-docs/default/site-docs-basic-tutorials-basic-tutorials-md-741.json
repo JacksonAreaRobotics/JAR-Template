@@ -1,0 +1,27 @@
+{
+  "unversionedId": "basic-tutorials/basic-tutorials",
+  "id": "basic-tutorials/basic-tutorials",
+  "title": "Basic Tutorials",
+  "description": "The basic tutorials assume no prior knowledge of VexCode Pro V5, C++, or JAR Template.",
+  "source": "@site/docs/basic-tutorials/basic-tutorials.md",
+  "sourceDirName": "basic-tutorials",
+  "slug": "/basic-tutorials/",
+  "permalink": "/JAR-Template/basic-tutorials/",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Basic Tutorials"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Autonomous Functions",
+    "permalink": "/JAR-Template/docs/autonomous-functions"
+  },
+  "next": {
+    "title": "Installing JAR Template",
+    "permalink": "/JAR-Template/basic-tutorials/installing-jar-template"
+  }
+}

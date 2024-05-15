@@ -1,0 +1,23 @@
+{
+  "unversionedId": "index",
+  "id": "index",
+  "title": "About JAR Template",
+  "description": "JAR Template is a simple and powerful library for Vexcode Pro V5.",
+  "source": "@site/docs/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/JAR-Template/",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "About"
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Docs",
+    "permalink": "/JAR-Template/docs/"
+  }
+}

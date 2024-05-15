@@ -1,0 +1,27 @@
+{
+  "unversionedId": "basic-tutorials/installing-jar-template",
+  "id": "basic-tutorials/installing-jar-template",
+  "title": "Installing JAR Template",
+  "description": "1. If you haven't already, download Vexcode Pro V5 and follow the Install Wizard's instructions to install.",
+  "source": "@site/docs/basic-tutorials/installing-jar-template.md",
+  "sourceDirName": "basic-tutorials",
+  "slug": "/basic-tutorials/installing-jar-template",
+  "permalink": "/JAR-Template/basic-tutorials/installing-jar-template",
+  "draft": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Installing JAR Template"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Basic Tutorials",
+    "permalink": "/JAR-Template/basic-tutorials/"
+  },
+  "next": {
+    "title": "Basic Usage",
+    "permalink": "/JAR-Template/basic-tutorials/basic-usage"
+  }
+}
