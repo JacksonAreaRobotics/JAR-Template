@@ -7,10 +7,12 @@ competition Competition;
 /*                             VEXcode Config                                */
 /*                                                                           */
 /*  Before you do anything else, start by configuring your motors and        */
-/*  sensors using the V5 port icon in the top right of the screen. Doing     */
-/*  so will update robot-config.cpp and robot-config.h automatically, so     */
-/*  you don't have to. Ensure that your motors are reversed properly. For    */
-/*  the drive, spinning all motors forward should drive the robot forward.   */
+/*  sensors. In VEXcode Pro V5, you can do this using the graphical          */
+/*  configurer port icon at the top right. In the VSCode extension, you'll   */
+/*  need to go to robot-config.cpp and robot-config.h and create the         */
+/*  motors yourself by following the style shown. All motors must be         */
+/*  properly reversed, meaning the drive should drive forward when all       */
+/*  motors spin forward.                                                     */
 /*---------------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------------*/
@@ -18,7 +20,7 @@ competition Competition;
 /*                                                                           */
 /*  Where all the magic happens. Follow the instructions below to input      */
 /*  all the physical constants and values for your robot. You should         */
-/*  already have configured your robot manually with the sidebar configurer. */
+/*  already have configured your motors.                                     */
 /*---------------------------------------------------------------------------*/
 
 Drive chassis(

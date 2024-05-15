@@ -4,20 +4,15 @@ using namespace vex;
 using signature = vision::signature;
 using code = vision::code;
 
-// A global instance of brain used for printing to the V5 Brain screen
+// A global instance of brain used for printing to the V5 Brain screen.
 brain  Brain;
 
-// VEXcode device constructors
+//The motor constructor takes motors as (port, ratio, reversed), so for example
+//motor LeftFront = motor(PORT1, ratio6_1, false);
 
-// VEXcode generated functions
+//Add your devices below, and don't forget to do the same in robot-config.h:
 
 
-
-/**
- * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- * 
- * This should be called at the start of your int main function.
- */
 void vexcodeInit( void ) {
   // nothing to initialize
 }
