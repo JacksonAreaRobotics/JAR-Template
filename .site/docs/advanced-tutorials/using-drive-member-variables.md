@@ -82,7 +82,7 @@ chassis.turn_to_angle(0);
 
 This system of setting the drive class member variables is a pretty readable and on-the-fly way to make your functions do what you want when you want them to.
 
-It happens that the left and right drive motor groups are also accessible through the drive class. So if, for example, you wanted to spin the right side of the drive forward at 12 volts, you could do it like this:
+The left and right drive motor groups are also accessible through the drive class. So if, for example, you wanted to spin the right side of the drive forward at 12 volts, you could do it like this:
 
 ```cpp
 chassis.DriveR.spin(fwd, 12, volt);
