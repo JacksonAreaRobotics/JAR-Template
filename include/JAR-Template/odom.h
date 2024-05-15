@@ -1,3 +1,9 @@
+/**
+ * General-use odometry class with X_position, Y_position, and
+ * orientation_deg being the relevant outputs. This works for one
+ * and two-tracker systems, and needs a gyro to get input angle.
+ */
+
 class Odom
 {
 private:
