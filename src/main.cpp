@@ -108,37 +108,50 @@ PORT3,     -PORT4,
 int current_auton_selection = 0;
 bool auto_started = false;
 
-void pre_auton(void) {
+/**
+ * Function before autonomous. It prints the current auton number on the screen
+ * and tapping the screen cycles the selected auton by 1. Add anything else you
+ * may need, like resetting pneumatic components. You can rename these autons to
+ * be more descriptive, if you like.
+ */
+
+void pre_auton() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   default_constants();
 
-  while(auto_started == false){            //Changing the names below will only change their names on the
-    Brain.Screen.clearScreen();            //brain screen for auton selection.
-    switch(current_auton_selection){       //Tap the brain screen to cycle through autons.
+  while(!auto_started){           
+    Brain.Screen.clearScreen();
+    Brain.Screen.printAt(5, 5, "JAR Template v1.3.0");
+    Brain.Screen.printAt(15, 5, "Battery Percentage:");    
+    Brain.Screen.printAt(25, 5, "%d", Brain.Battery.capacity());   
+    Brain.Screen.printAt(35, 5, "Chassis Heading Reading:");    
+    Brain.Screen.printAt(45, 5, "%f", chassis.get_absolute_heading());
+    Brain.Screen.printAt(55, 5, "Selected Auton:")     
+    switch(current_auton_selection){       
       case 0:
-        Brain.Screen.printAt(50, 50, "Drive Test");
+        Brain.Screen.printAt(65, 5, "Auton 1");
         break;
       case 1:
-        Brain.Screen.printAt(50, 50, "Drive Test");
+        Brain.Screen.printAt(65, 5, "Auton 2");
         break;
       case 2:
-        Brain.Screen.printAt(50, 50, "Turn Test");
+        Brain.Screen.printAt(65, 5, "Auton 3");
         break;
       case 3:
-        Brain.Screen.printAt(50, 50, "Swing Test");
+        Brain.Screen.printAt(65, 5, "Auton 4");
         break;
       case 4:
-        Brain.Screen.printAt(50, 50, "Full Test");
+        Brain.Screen.printAt(65, 5, "Auton 5");
         break;
       case 5:
-        Brain.Screen.printAt(50, 50, "Odom Test");
+        Brain.Screen.printAt(65, 5, "Auton 6");
         break;
       case 6:
-        Brain.Screen.printAt(50, 50, "Tank Odom Test");
+        Brain.Screen.printAt(65, 5, "Auton 7");
         break;
       case 7:
-        Brain.Screen.printAt(50, 50, "Holonomic Odom Test");
+        Brain.Screen.printAt(65, 5, "Auton 8");
         break;
     }
     if(Brain.Screen.pressing()){
@@ -151,13 +164,20 @@ void pre_auton(void) {
   }
 }
 
+/**
+ * Auton function, which runs the selected auton. Case 0 is the default,
+ * and will run in the brain screen goes untouched during preauton. Replace
+ * drive_test(), for example, with your own auton function you created in
+ * autons.cpp and declared in autons.h.
+ */
+
 void autonomous(void) {
   auto_started = true;
   switch(current_auton_selection){  
     case 0:
-      drive_test(); //This is the default auton, if you don't select from the brain.
-      break;        //Change these to be your own auton functions in order to use the auton selector.
-    case 1:         //Tap the screen to cycle through autons.
+      drive_test(); 
+      break;        
+    case 1:         
       drive_test();
       break;
     case 2:
