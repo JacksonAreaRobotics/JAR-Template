@@ -1,12 +1,12 @@
-# JAR-Template
-A simple and powerful VexCode Pro V5 library featuring PID, odometry, and custom motion algorithms. (short for Jackson Area Robotics Template)
+# JAR Template
+A simple and powerful VEXcode library featuring PID, odometry, and custom motion algorithms.
 
 ## Installation
 1. Download the project by downloading the "JAR-Template.zip" file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
-2. Import the project in VexCode by choosing "Import" from the file menu and selecting the JAR-Template.zip file you downloaded.
+2. Import the project in VEXCode Pro V5 or VEX VS Code by choosing "Import" from the file menu and selecting the JAR-Template.zip file you downloaded.
 
-3. First configure your robot using the graphical configurer, then follow the instructions in main.cpp to configure the template to your robot specs.
+3. Follow the instructions in main.cpp to configure the motors, chassis, and autons.
 
 4. Check out the <a href="https://jacksonarearobotics.github.io/JAR-Template/" target="_blank">documentation</a> for more detailed tutorials and information on using the template.
 
