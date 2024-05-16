@@ -2,7 +2,7 @@
   "unversionedId": "index",
   "id": "index",
   "title": "About JAR Template",
-  "description": "JAR Template is a simple and powerful library for Vexcode Pro V5.",
+  "description": "JAR Template is a simple and powerful library for Vexcode Pro V5 and the VEX VS Code Extension.",
   "source": "@site/docs/index.md",
   "sourceDirName": ".",
   "slug": "/",
