@@ -122,7 +122,7 @@ void pre_auton() {
 
   while(!auto_started){           
     Brain.Screen.clearScreen();
-    Brain.Screen.printAt(5, 5, "JAR Template v1.3.0");
+    Brain.Screen.printAt(5, 5, "JAR Template v1.2.0");
     Brain.Screen.printAt(15, 5, "Battery Percentage:");    
     Brain.Screen.printAt(25, 5, "%d", Brain.Battery.capacity());   
     Brain.Screen.printAt(35, 5, "Chassis Heading Reading:");    
