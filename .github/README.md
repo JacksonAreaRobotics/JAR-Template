@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/github/downloads/JacksonAreaRobotics/JAR-Template/total?style=social&color=yellow">
+<img src="https://img.shields.io/github/downloads/JacksonAreaRobotics/JAR-Template/total?style=plastic&color=yellow">
 <img src="https://img.shields.io/github/stars/JacksonAreaRobotics/JAR-Template-yellow">
 <img src="https://img.shields.io/badge/version-v1.2.0-yellow">
 
