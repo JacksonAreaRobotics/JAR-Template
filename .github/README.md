@@ -1,6 +1,6 @@
-<img src="https://img.shields.io/github/downloads/JacksonAreaRobotics/JAR-Template/total>
-<img src="https://img.shields.io/github/stars/JacksonAreaRobotics/JAR-Template>
-<img src="https://img.shields.io/badge/version-v1.2.0-blue>
+<img src="https://img.shields.io/github/downloads/JacksonAreaRobotics/JAR-Template/total?>
+<img src="https://img.shields.io/github/stars/JacksonAreaRobotics/JAR-Template?>
+<img src="https://img.shields.io/badge/version-v1.2.0-blue?>
 
 # JAR Template
 A simple and powerful VEXcode library featuring PID, odometry, and custom motion algorithms.
