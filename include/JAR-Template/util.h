@@ -17,3 +17,5 @@ float to_volt(float percent);
 int to_port(int port);
 
 float deadband(float input, float width);
+
+bool is_line_settled(float desired_X, float desired_Y, float desired_angle, float current_X, float current_Y);

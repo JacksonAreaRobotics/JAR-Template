@@ -142,3 +142,21 @@ float deadband(float input, float width){
   }
   return(input);
 }
+
+/**
+ * Settling control for odometry functions.
+ * Draws a line perpendicular to the line from the robot to the desired 
+ * endpoint, and checks if the robot has crossed that line. Allows for
+ * very quick settling, and thereby chaining for fast motion control.
+ * 
+ * @param desired_X The ending X position in inches.
+ * @param desired_Y The ending Y position in inches.
+ * @param desired_angle_deg The direction of the line to be drawn.
+ * @param current_X The robot's X position in inches.
+ * @param current_Y The robot's Y position in inches.
+ * @return Whether the robot can be considered settled.
+ */
+
+bool is_line_settled(float desired_X, float desired_Y, float desired_angle_deg, float current_X, float current_Y){
+  return( -(desired_Y-current_Y) * cos(to_rad(desired_angle_deg)) <= (desired_X-current_X) * sin(to_rad(desired_angle_deg)) )
+}

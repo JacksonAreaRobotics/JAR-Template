@@ -482,8 +482,9 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
 
 void Drive::drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti){
   PID drivePID(hypot(X_position-get_X_position(),Y_position-get_Y_position()), drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
-  PID headingPID(reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading()), heading_kp, heading_ki, heading_kd, heading_starti);
-  while(drivePID.is_settled() == false){
+  float start_angle_deg = to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()));
+  PID headingPID(start_angle_deg-get_absolute_heading(), heading_kp, heading_ki, heading_kd, heading_starti);
+  while(!is_line_settled(X_position, Y_position, start_angle_deg, get_X_position(), get_Y_position())){
     float drive_error = hypot(X_position-get_X_position(),Y_position-get_Y_position());
     float heading_error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading());
     float drive_output = drivePID.compute(drive_error);
