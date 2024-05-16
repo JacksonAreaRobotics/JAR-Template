@@ -7,6 +7,14 @@
 # JAR Template
 A simple and powerful VEXcode library featuring PID, odometry, and custom motion algorithms.
 
+## Features
+- Generic PID class
+- Generic Odometry class
+- Holonomic drive support
+- Drive to point algorithm
+- Drive to pose algorithm
+- Basic Auton Selector
+
 ## Installation
 1. Download the project by downloading the "JAR-Template.zip" file [here](https://github.com/2775Josh/JAR-Template/releases/latest).
 
