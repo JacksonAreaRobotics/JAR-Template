@@ -31,6 +31,8 @@ void odom_constants(){
   default_constants();
   chassis.drive_max_voltage = 8;
   chassis.drive_settle_error = 3;
+  chassis.boomerang_lead = .5;
+  chassis.drive_min_voltage = 0;
 }
 
 /**

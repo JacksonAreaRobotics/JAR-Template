@@ -469,22 +469,28 @@ float Drive::get_Y_position(){
  */
 
 void Drive::drive_to_point(float X_position, float Y_position){
-  drive_to_point(X_position, Y_position, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+  drive_to_point(X_position, Y_position, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
 }
 
-void Drive::drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage){
-  drive_to_point(X_position, Y_position, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+void Drive::drive_to_point(float X_position, float Y_position, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage){
+  drive_to_point(X_position, Y_position, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
 }
 
-void Drive::drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout){
-  drive_to_point(X_position, Y_position, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+void Drive::drive_to_point(float X_position, float Y_position, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout){
+  drive_to_point(X_position, Y_position, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
 }
 
-void Drive::drive_to_point(float X_position, float Y_position, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti){
+void Drive::drive_to_point(float X_position, float Y_position, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti){
   PID drivePID(hypot(X_position-get_X_position(),Y_position-get_Y_position()), drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
   float start_angle_deg = to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()));
   PID headingPID(start_angle_deg-get_absolute_heading(), heading_kp, heading_ki, heading_kd, heading_starti);
-  while(!is_line_settled(X_position, Y_position, start_angle_deg, get_X_position(), get_Y_position())){
+  bool line_settled = false;
+  bool prev_line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+  while(!drivePID.is_settled()){
+    line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+    if(line_settled && ! prev_line_settled){ break; }
+    prev_line_settled = line_settled;
+
     float drive_error = hypot(X_position-get_X_position(),Y_position-get_Y_position());
     float heading_error = reduce_negative_180_to_180(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading());
     float drive_output = drivePID.compute(drive_error);
@@ -499,7 +505,79 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_max_v
     drive_output = clamp(drive_output, -fabs(heading_scale_factor)*drive_max_voltage, fabs(heading_scale_factor)*drive_max_voltage);
     heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
 
-    drive_with_voltage(drive_output+heading_output, drive_output-heading_output);
+    drive_output = clamp_min_voltage(drive_output, drive_min_voltage);
+
+    drive_with_voltage(left_voltage_scaling(drive_output, heading_output), right_voltage_scaling(drive_output, heading_output));
+    task::sleep(10);
+  }
+}
+
+/**
+ * Drives to a specified point and orientation on the field.
+ * Uses a boomerang controller. The carrot point is back from the target
+ * by the same distance as the robot's distance to the target, times the lead. The
+ * robot always tries to go to the carrot, which is constantly moving, and the
+ * robot eventually gets into position. The heading correction is optimized to only
+ * try to reach the correct angle when drive error is low, and the robot will drive 
+ * backwards to reach a pose if it's faster. .5 is a reasonable value for the lead.
+ * 
+ * @param X_position Desired x position in inches.
+ * @param Y_position Desired y position in inches.
+ * @param angle Desired orientation in degrees.
+ * @param lead Constant scale factor that determines how far away the carrot point is. 
+ * @param drive_min_voltage Minimum voltage on the drive, used for chaining movements.
+ */
+
+void Drive::drive_to_pose(float X_position, float Y_position, float angle){
+  drive_to_pose(X_position, Y_position, angle, boomerang_lead, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+}
+
+void Drive::drive_to_pose(float X_position, float Y_position, float angle, float lead, float drive_min_voltage){
+  drive_to_pose(X_position, Y_position, angle, lead, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+}
+
+void Drive::drive_to_pose(float X_position, float Y_position, float angle, float lead, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage){
+  drive_to_pose(X_position, Y_position, angle, lead, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+}
+
+
+void Drive::drive_to_pose(float X_position, float Y_position, float angle, float lead, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout){
+  drive_to_pose(X_position, Y_position, angle, lead, drive_min_voltage, drive_max_voltage, heading_max_voltage, drive_settle_error, drive_settle_time, drive_timeout, drive_kp, drive_ki, drive_kd, drive_starti, heading_kp, heading_ki, heading_kd, heading_starti);
+}
+
+void Drive::drive_to_pose(float X_position, float Y_position, float angle, float lead, float drive_min_voltage, float drive_max_voltage, float heading_max_voltage, float drive_settle_error, float drive_settle_time, float drive_timeout, float drive_kp, float drive_ki, float drive_kd, float drive_starti, float heading_kp, float heading_ki, float heading_kd, float heading_starti){
+  float target_distance = hypot(X_position-get_X_position(),Y_position-get_Y_position());
+  PID drivePID(target_distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
+  PID headingPID(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading(), heading_kp, heading_ki, heading_kd, heading_starti);
+  bool line_settled = false;
+  bool prev_line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+  while(!drivePID.is_settled()){
+    line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+    if(line_settled && ! prev_line_settled){ break; }
+    prev_line_settled = line_settled;
+
+    target_distance = hypot(X_position-get_X_position(),Y_position-get_Y_position());
+
+    float carrot_X = X_position - cos(to_rad(angle)) * lead * target_distance;
+    float carrot_Y = Y_position - sin(to_rad(angle)) * lead * target_distance;
+
+    float drive_error = hypot(carrot_X-get_X_position(),carrot_Y-get_Y_position());
+    float heading_error = reduce_negative_180_to_180(to_deg(atan2(carrot_X-get_X_position(),carrot_Y-get_Y_position()))-get_absolute_heading());
+    if (drive_error<drive_settle_error) { heading_error = reduce_negative_180_to_180(angle-get_absolute_heading()); }
+    
+    float drive_output = drivePID.compute(drive_error);
+
+    float heading_scale_factor = cos(to_rad(heading_error));
+    drive_output*=heading_scale_factor;
+    heading_error = reduce_negative_90_to_90(heading_error);
+    float heading_output = headingPID.compute(heading_error);
+
+    drive_output = clamp(drive_output, -fabs(heading_scale_factor)*drive_max_voltage, fabs(heading_scale_factor)*drive_max_voltage);
+    heading_output = clamp(heading_output, -heading_max_voltage, heading_max_voltage);
+
+    drive_output = clamp_min_voltage(drive_output, drive_min_voltage);
+
+    drive_with_voltage(left_voltage_scaling(drive_output, heading_output), right_voltage_scaling(drive_output, heading_output));
     task::sleep(10);
   }
 }

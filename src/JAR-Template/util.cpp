@@ -160,3 +160,60 @@ float deadband(float input, float width){
 bool is_line_settled(float desired_X, float desired_Y, float desired_angle_deg, float current_X, float current_Y){
   return( -(desired_Y-current_Y) * cos(to_rad(desired_angle_deg)) <= (desired_X-current_X) * sin(to_rad(desired_angle_deg)) )
 }
+
+/**
+ * Voltage scaling to keep from applying more than 12 volts to either side of the drive.
+ * Divides both drive and heading output proportionally to get a similar result to the
+ * desired one.
+ * 
+ * @param drive_output The forward output of the drive.
+ * @param heading_output The angular output of the drive.
+ * @return The scaled voltage for the left side of the robot.
+ */
+
+float left_voltage_scaling(float drive_output, float heading_output){
+  float ratio = std::max(abs(drive_output+heading_output), abs(drive_output-heading_output))/12.0;
+  if (ratio > 1) {
+    return (drive_output+heading_output)/ratio;
+  }
+  return drive_output+heading_output;
+}
+
+/**
+ * Voltage scaling to keep from applying more than 12 volts to either side of the drive.
+ * Divides both drive and heading output proportionally to get a similar result to the
+ * desired one.
+ * 
+ * @param drive_output The forward output of the drive.
+ * @param heading_output The angular output of the drive.
+ * @return The scaled voltage for the right side of the robot.
+ */
+
+float right_voltage_scaling(float drive_output, float heading_output){
+  float ratio = std::max(abs(drive_output+heading_output), abs(drive_output-heading_output))/12.0;
+  if (ratio > 1) {
+    return (drive_output-heading_output)/ratio;
+  }
+  return drive_output-heading_output;
+}
+
+/**
+ * Brings an output up to the minimum voltage if it's too slow.
+ * Used for minimum voltage calculations for movement chaining.
+ * Has no effect on 0 voltage output, because how do we know 
+ * which way it's supposed to be going?
+ * 
+ * @param drive_output The forward output of the drive.
+ * @param drive_min_voltage The minimum output of the drive.
+ * @return The voltage with the minimum applied.
+ */
+
+float clamp_min_voltage(float drive_output, float drive_min_voltage){
+  if(drive_output < 0 && drive_output > -drive_min_voltage){
+      return -drive_min_voltage;
+  }
+  if(drive_output > 0 && drive_output < drive_min_voltage){
+    return drive_min_voltage;
+  }
+  return drive_output;
+}
