@@ -18,8 +18,14 @@ A simple and powerful VEXcode library featuring PID, odometry, and custom motion
 
 ## [Docs](https://jacksonarearobotics.github.io/JAR-Template/)
 
+Documentation of the classes and functions in JAR Template.
+
 ## [Basic Tutorials](https://jacksonarearobotics.github.io/JAR-Template/basic-tutorials)
 
+Earlier tutorials like installing and writing your first auton.
+
 ## [Advanced Tutorials](https://jacksonarearobotics.github.io/JAR-Template/advanced-tutorials)
+
+Later tutorials like customizing algorithms and motion chaining.
 
 Developed by Josh, from 2775V of Jackson Area Robotics. Big thanks to Samuel from 2775V, Javier, Mikey, Ryan (4253B), Leo, JerryLum, and Nick (QUEEN) from VTOW and JPearman from the Vex Forum, whose assistance made this project possible.
