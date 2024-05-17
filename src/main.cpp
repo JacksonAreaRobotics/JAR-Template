@@ -122,36 +122,36 @@ void pre_auton() {
 
   while(!auto_started){           
     Brain.Screen.clearScreen();
-    Brain.Screen.printAt(5, 5, "JAR Template v1.2.0");
-    Brain.Screen.printAt(15, 5, "Battery Percentage:");    
-    Brain.Screen.printAt(25, 5, "%d", Brain.Battery.capacity());   
-    Brain.Screen.printAt(35, 5, "Chassis Heading Reading:");    
-    Brain.Screen.printAt(45, 5, "%f", chassis.get_absolute_heading());
-    Brain.Screen.printAt(55, 5, "Selected Auton:")     
+    Brain.Screen.printAt(5, 20, "JAR Template v1.2.0");
+    Brain.Screen.printAt(5, 40, "Battery Percentage:");    
+    Brain.Screen.printAt(5, 60, "%d", Brain.Battery.capacity());   
+    Brain.Screen.printAt(5, 80, "Chassis Heading Reading:");    
+    Brain.Screen.printAt(5, 100, "%f", chassis.get_absolute_heading());
+    Brain.Screen.printAt(5, 120, "Selected Auton:");  
     switch(current_auton_selection){       
       case 0:
-        Brain.Screen.printAt(65, 5, "Auton 1");
+        Brain.Screen.printAt(5, 140, "Auton 1");
         break;
       case 1:
-        Brain.Screen.printAt(65, 5, "Auton 2");
+        Brain.Screen.printAt(5, 140, "Auton 2");
         break;
       case 2:
-        Brain.Screen.printAt(65, 5, "Auton 3");
+        Brain.Screen.printAt(5, 140, "Auton 3");
         break;
       case 3:
-        Brain.Screen.printAt(65, 5, "Auton 4");
+        Brain.Screen.printAt(5, 140, "Auton 4");
         break;
       case 4:
-        Brain.Screen.printAt(65, 5, "Auton 5");
+        Brain.Screen.printAt(5, 140, "Auton 5");
         break;
       case 5:
-        Brain.Screen.printAt(65, 5, "Auton 6");
+        Brain.Screen.printAt(5, 140, "Auton 6");
         break;
       case 6:
-        Brain.Screen.printAt(65, 5, "Auton 7");
+        Brain.Screen.printAt(5, 140, "Auton 7");
         break;
       case 7:
-        Brain.Screen.printAt(65, 5, "Auton 8");
+        Brain.Screen.printAt(5, 140, "Auton 8");
         break;
     }
     if(Brain.Screen.pressing()){

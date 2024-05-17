@@ -10,19 +10,19 @@
   "draft": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 2,
+  "sidebarPosition": 4,
   "frontMatter": {
-    "sidebar_position": 2,
+    "sidebar_position": 4,
     "sidebar_label": "Docs",
     "title": "Docs"
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "About",
-    "permalink": "/JAR-Template/"
+    "title": "Using Drive Member Variables",
+    "permalink": "/JAR-Template/advanced-tutorials/using-drive-member-variables"
   },
   "next": {
-    "title": "Drive Constructor",
-    "permalink": "/JAR-Template/docs/drive-constructor"
+    "title": "Autonomous Functions",
+    "permalink": "/JAR-Template/docs/autonomous-functions"
   }
 }

@@ -46,13 +46,48 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "docs/drive-class/drive-class",
+              "path": "/JAR-Template/docs/drive-class/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/drive-class/drive-constructor",
+              "path": "/JAR-Template/docs/drive-class/drive-constructor",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/drive-class/general-functions",
+              "path": "/JAR-Template/docs/drive-class/general-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/drive-class/motion-functions",
+              "path": "/JAR-Template/docs/drive-class/motion-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "docs/drive-constructor",
               "path": "/JAR-Template/docs/drive-constructor",
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "docs/odometry-class",
+              "path": "/JAR-Template/docs/odometry-class",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/PID-class",
+              "path": "/JAR-Template/docs/PID-class",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "docs/usercontrol-functions",
               "path": "/JAR-Template/docs/usercontrol-functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "docs/utility-functions",
+              "path": "/JAR-Template/docs/utility-functions",
               "sidebar": "tutorialSidebar"
             },
             {

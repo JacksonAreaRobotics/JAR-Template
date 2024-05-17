@@ -10,19 +10,19 @@
   "draft": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 3,
+  "sidebarPosition": 1,
   "frontMatter": {
-    "sidebar_position": 3,
+    "sidebar_position": 1,
     "sidebar_label": "Autonomous Functions",
     "title": "Autonomous Functions"
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Usercontrol Functions",
-    "permalink": "/JAR-Template/docs/usercontrol-functions"
+    "title": "Docs",
+    "permalink": "/JAR-Template/docs/"
   },
   "next": {
-    "title": "Basic Tutorials",
-    "permalink": "/JAR-Template/basic-tutorials/"
+    "title": "Drive Class",
+    "permalink": "/JAR-Template/docs/drive-class/"
   }
 }

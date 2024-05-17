@@ -10,19 +10,19 @@
   "draft": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 2,
+  "sidebarPosition": 5,
   "frontMatter": {
-    "sidebar_position": 2,
+    "sidebar_position": 5,
     "sidebar_label": "Usercontrol Functions",
     "title": "Usercontrol Functions"
   },
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Drive Constructor",
-    "permalink": "/JAR-Template/docs/drive-constructor"
+    "permalink": "/JAR-Template/docs/PID-class"
   },
   "next": {
-    "title": "Autonomous Functions",
-    "permalink": "/JAR-Template/docs/autonomous-functions"
+    "title": "Drive Constructor",
+    "permalink": "/JAR-Template/docs/utility-functions"
   }
 }

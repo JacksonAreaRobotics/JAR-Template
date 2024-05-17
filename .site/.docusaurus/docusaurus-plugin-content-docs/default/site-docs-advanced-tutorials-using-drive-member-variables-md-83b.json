@@ -19,5 +19,9 @@
   "previous": {
     "title": "Advanced Tutorials",
     "permalink": "/JAR-Template/advanced-tutorials/"
+  },
+  "next": {
+    "title": "Docs",
+    "permalink": "/JAR-Template/docs/"
   }
 }

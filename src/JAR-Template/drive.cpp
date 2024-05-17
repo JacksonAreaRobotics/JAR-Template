@@ -239,7 +239,7 @@ float Drive::get_right_position_in(){
  * @param mode hold, brake, or stop
  */
 
-void drive_stop(vex::brakeType mode){
+void Drive::drive_stop(vex::brakeType mode){
   DriveL.stop(mode);
   DriveR.stop(mode);
 }
@@ -485,10 +485,10 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_min_v
   float start_angle_deg = to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()));
   PID headingPID(start_angle_deg-get_absolute_heading(), heading_kp, heading_ki, heading_kd, heading_starti);
   bool line_settled = false;
-  bool prev_line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+  bool prev_line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position(), get_Y_position());
   while(!drivePID.is_settled()){
-    line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
-    if(line_settled && ! prev_line_settled){ break; }
+    line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position(), get_Y_position());
+    if(line_settled && !prev_line_settled){ break; }
     prev_line_settled = line_settled;
 
     float drive_error = hypot(X_position-get_X_position(),Y_position-get_Y_position());
@@ -550,16 +550,16 @@ void Drive::drive_to_pose(float X_position, float Y_position, float angle, float
   PID drivePID(target_distance, drive_kp, drive_ki, drive_kd, drive_starti, drive_settle_error, drive_settle_time, drive_timeout);
   PID headingPID(to_deg(atan2(X_position-get_X_position(),Y_position-get_Y_position()))-get_absolute_heading(), heading_kp, heading_ki, heading_kd, heading_starti);
   bool line_settled = false;
-  bool prev_line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
+  bool prev_line_settled = is_line_settled(X_position, Y_position, angle, get_X_position(), get_Y_position());
   while(!drivePID.is_settled()){
-    line_settled = is_line_settled(X_position, Y_position, start_angle_deg, get_X_position, get_Y_position);
-    if(line_settled && ! prev_line_settled){ break; }
+    line_settled = is_line_settled(X_position, Y_position, angle, get_X_position(), get_Y_position());
+    if(line_settled && !prev_line_settled){ break; }
     prev_line_settled = line_settled;
 
     target_distance = hypot(X_position-get_X_position(),Y_position-get_Y_position());
 
-    float carrot_X = X_position - cos(to_rad(angle)) * lead * target_distance;
-    float carrot_Y = Y_position - sin(to_rad(angle)) * lead * target_distance;
+    float carrot_X = X_position - sin(to_rad(angle)) * lead * target_distance;
+    float carrot_Y = Y_position - cos(to_rad(angle)) * lead * target_distance;
 
     float drive_error = hypot(carrot_X-get_X_position(),carrot_Y-get_Y_position());
     float heading_error = reduce_negative_180_to_180(to_deg(atan2(carrot_X-get_X_position(),carrot_Y-get_Y_position()))-get_absolute_heading());

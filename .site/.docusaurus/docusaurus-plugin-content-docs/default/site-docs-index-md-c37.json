@@ -17,7 +17,7 @@
   },
   "sidebar": "tutorialSidebar",
   "next": {
-    "title": "Docs",
-    "permalink": "/JAR-Template/docs/"
+    "title": "Basic Tutorials",
+    "permalink": "/JAR-Template/basic-tutorials/"
   }
 }

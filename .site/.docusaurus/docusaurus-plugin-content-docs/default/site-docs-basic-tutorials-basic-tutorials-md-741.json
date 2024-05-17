@@ -10,15 +10,15 @@
   "draft": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 3,
+  "sidebarPosition": 2,
   "frontMatter": {
-    "sidebar_position": 3,
+    "sidebar_position": 2,
     "sidebar_label": "Basic Tutorials"
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Autonomous Functions",
-    "permalink": "/JAR-Template/docs/autonomous-functions"
+    "title": "About",
+    "permalink": "/JAR-Template/"
   },
   "next": {
     "title": "Installing JAR Template",
