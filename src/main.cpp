@@ -120,15 +120,15 @@ void pre_auton() {
   vexcodeInit();
   default_constants();
 
-  while(!auto_started){           
+  while(!auto_started){
     Brain.Screen.clearScreen();
     Brain.Screen.printAt(5, 20, "JAR Template v1.2.0");
-    Brain.Screen.printAt(5, 40, "Battery Percentage:");    
-    Brain.Screen.printAt(5, 60, "%d", Brain.Battery.capacity());   
-    Brain.Screen.printAt(5, 80, "Chassis Heading Reading:");    
+    Brain.Screen.printAt(5, 40, "Battery Percentage:");
+    Brain.Screen.printAt(5, 60, "%d", Brain.Battery.capacity());
+    Brain.Screen.printAt(5, 80, "Chassis Heading Reading:");
     Brain.Screen.printAt(5, 100, "%f", chassis.get_absolute_heading());
-    Brain.Screen.printAt(5, 120, "Selected Auton:");  
-    switch(current_auton_selection){       
+    Brain.Screen.printAt(5, 120, "Selected Auton:");
+    switch(current_auton_selection){
       case 0:
         Brain.Screen.printAt(5, 140, "Auton 1");
         break;
@@ -173,10 +173,10 @@ void pre_auton() {
 
 void autonomous(void) {
   auto_started = true;
-  switch(current_auton_selection){  
+  switch(current_auton_selection){ 
     case 0:
-      drive_test(); 
-      break;        
+      drive_test();
+      break;
     case 1:         
       drive_test();
       break;
