@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/JAR-Template/',
-    component: ComponentCreator('/JAR-Template/', '4cf'),
+    component: ComponentCreator('/JAR-Template/', '6d5'),
     routes: [
       {
         path: '/JAR-Template/',
@@ -49,12 +49,6 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/JAR-Template/docs/autonomous-functions',
-        component: ComponentCreator('/JAR-Template/docs/autonomous-functions', '08d'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
         path: '/JAR-Template/docs/drive-class',
         component: ComponentCreator('/JAR-Template/docs/drive-class', 'f32'),
         exact: true,
@@ -79,12 +73,6 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/JAR-Template/docs/drive-constructor',
-        component: ComponentCreator('/JAR-Template/docs/drive-constructor', '25c'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
         path: '/JAR-Template/docs/odometry-class',
         component: ComponentCreator('/JAR-Template/docs/odometry-class', 'e23'),
         exact: true,
@@ -93,12 +81,6 @@ export default [
       {
         path: '/JAR-Template/docs/PID-class',
         component: ComponentCreator('/JAR-Template/docs/PID-class', '4a6'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
-        path: '/JAR-Template/docs/usercontrol-functions',
-        component: ComponentCreator('/JAR-Template/docs/usercontrol-functions', 'f79'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

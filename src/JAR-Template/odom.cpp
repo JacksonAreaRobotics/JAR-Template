@@ -10,7 +10,7 @@
  * pretend the wheel never spins, which is equivalent to a no-drift robot.
  * 
  * @param ForwardTracker_center_distance A horizontal distance to the wheel center in inches.
- * @param SideWaysTracker_center_distance A vertical distance to the wheel center in inches.
+ * @param SidewaysTracker_center_distance A vertical distance to the wheel center in inches.
  */
 
 void Odom::set_physical_distances(float ForwardTracker_center_distance, float SidewaysTracker_center_distance){

@@ -36,11 +36,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "docs/autonomous-functions",
-              "path": "/JAR-Template/docs/autonomous-functions",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "docs/docs",
               "path": "/JAR-Template/docs/",
               "sidebar": "tutorialSidebar"
@@ -66,11 +61,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "docs/drive-constructor",
-              "path": "/JAR-Template/docs/drive-constructor",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "docs/odometry-class",
               "path": "/JAR-Template/docs/odometry-class",
               "sidebar": "tutorialSidebar"
@@ -78,11 +68,6 @@
             {
               "id": "docs/PID-class",
               "path": "/JAR-Template/docs/PID-class",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "docs/usercontrol-functions",
-              "path": "/JAR-Template/docs/usercontrol-functions",
               "sidebar": "tutorialSidebar"
             },
             {

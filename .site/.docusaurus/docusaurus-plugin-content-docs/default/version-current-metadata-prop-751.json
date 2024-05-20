@@ -58,12 +58,6 @@
         "collapsed": true,
         "items": [
           {
-            "type": "link",
-            "label": "Autonomous Functions",
-            "href": "/JAR-Template/docs/autonomous-functions",
-            "docId": "docs/autonomous-functions"
-          },
-          {
             "type": "category",
             "label": "Drive Class",
             "collapsible": true,
@@ -92,31 +86,19 @@
           },
           {
             "type": "link",
-            "label": "Drive Constructor",
-            "href": "/JAR-Template/docs/drive-constructor",
-            "docId": "docs/drive-constructor"
-          },
-          {
-            "type": "link",
-            "label": "Drive Constructor",
+            "label": "Odometry Class",
             "href": "/JAR-Template/docs/odometry-class",
             "docId": "docs/odometry-class"
           },
           {
             "type": "link",
-            "label": "Drive Constructor",
+            "label": "PID Class",
             "href": "/JAR-Template/docs/PID-class",
             "docId": "docs/PID-class"
           },
           {
             "type": "link",
-            "label": "Usercontrol Functions",
-            "href": "/JAR-Template/docs/usercontrol-functions",
-            "docId": "docs/usercontrol-functions"
-          },
-          {
-            "type": "link",
-            "label": "Drive Constructor",
+            "label": "Utility Functions",
             "href": "/JAR-Template/docs/utility-functions",
             "docId": "docs/utility-functions"
           }
@@ -156,12 +138,6 @@
       "description": "1. If you haven't already, download Vexcode Pro V5 and follow the Install Wizard's instructions to install.",
       "sidebar": "tutorialSidebar"
     },
-    "docs/autonomous-functions": {
-      "id": "docs/autonomous-functions",
-      "title": "Autonomous Functions",
-      "description": "JAR Template provides a multitude of ways to control the chassis using PID and odometry.",
-      "sidebar": "tutorialSidebar"
-    },
     "docs/docs": {
       "id": "docs/docs",
       "title": "Docs",
@@ -171,54 +147,42 @@
     "docs/drive-class/drive-class": {
       "id": "docs/drive-class/drive-class",
       "title": "Drive Class",
-      "description": "Since the drive class has a lot of functions, its documentation is split into general functions like setters and getters, and motion functions like `turntoangle()` and `drivetopoint()`. The drive constructor also get its own category since there are ten drive setups.",
+      "description": "Since the drive class has a lot of functions, its documentation is split into general functions like setters and getters, and motion functions like `turntoangle()` and `drivetopoint()`. The drive constructor also gets its own category since there are ten drive setups.",
       "sidebar": "tutorialSidebar"
     },
     "docs/drive-class/drive-constructor": {
       "id": "docs/drive-class/drive-constructor",
       "title": "Drive Constructor",
-      "description": "PID or c++? part 2",
+      "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
       "sidebar": "tutorialSidebar"
     },
     "docs/drive-class/general-functions": {
       "id": "docs/drive-class/general-functions",
       "title": "General Functions",
-      "description": "PID or c++? part 3",
+      "description": "JAR Template provides a quick setup for arcade and tank control for tank drive robots, and holonomic control for holonomic robots. This setup is a quick way to check that each drive port is reversed properly and that the robot drives well.",
       "sidebar": "tutorialSidebar"
     },
     "docs/drive-class/motion-functions": {
       "id": "docs/drive-class/motion-functions",
       "title": "Motion Functions",
-      "description": "PID or c++?",
-      "sidebar": "tutorialSidebar"
-    },
-    "docs/drive-constructor": {
-      "id": "docs/drive-constructor",
-      "title": "Drive Constructor",
-      "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
+      "description": "JAR Template provides a multitude of ways to control the chassis using PID and odometry.",
       "sidebar": "tutorialSidebar"
     },
     "docs/odometry-class": {
       "id": "docs/odometry-class",
-      "title": "Drive Constructor",
-      "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
+      "title": "Odometry Class",
+      "description": "General-use odometry class with Xposition, Yposition, and orientation_deg being the relevant outputs. This works for one-tracker and two-tracker systems, and requires a gyro to get input angle.",
       "sidebar": "tutorialSidebar"
     },
     "docs/PID-class": {
       "id": "docs/PID-class",
-      "title": "Drive Constructor",
+      "title": "PID Class",
       "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
-      "sidebar": "tutorialSidebar"
-    },
-    "docs/usercontrol-functions": {
-      "id": "docs/usercontrol-functions",
-      "title": "Usercontrol Functions",
-      "description": "JAR Template provides a quick setup for arcade and tank control for tank drive robots, and holonomic control for holonomic robots. This setup is a quick way to check that each drive port is reversed properly and that the robot drives well.",
       "sidebar": "tutorialSidebar"
     },
     "docs/utility-functions": {
       "id": "docs/utility-functions",
-      "title": "Drive Constructor",
+      "title": "Utility Functions",
       "description": "The JAR Template drive constructor can build drivetrains with no tracking wheels, but also supports tank and holonomic odometry, with either red optical encoders or V5 rotation sensors. Note that each constructor has the same prototype, and that every drive style requires a V5 inertial sensor.",
       "sidebar": "tutorialSidebar"
     },
