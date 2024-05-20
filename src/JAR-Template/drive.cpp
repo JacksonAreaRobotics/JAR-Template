@@ -519,12 +519,15 @@ void Drive::drive_to_point(float X_position, float Y_position, float drive_min_v
  * robot always tries to go to the carrot, which is constantly moving, and the
  * robot eventually gets into position. The heading correction is optimized to only
  * try to reach the correct angle when drive error is low, and the robot will drive 
- * backwards to reach a pose if it's faster. .5 is a reasonable value for the lead.
+ * backwards to reach a pose if it's faster. .5 is a reasonable value for the lead. 
+ * The setback parameter is used to glide into position more effectively. It is
+ * the distance back from the target that the robot tries to drive to first.
  * 
  * @param X_position Desired x position in inches.
  * @param Y_position Desired y position in inches.
  * @param angle Desired orientation in degrees.
  * @param lead Constant scale factor that determines how far away the carrot point is. 
+ * @param setback Distance in inches from target by which the carrot is always pushed back.
  * @param drive_min_voltage Minimum voltage on the drive, used for chaining movements.
  */
 
