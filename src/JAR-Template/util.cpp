@@ -121,7 +121,7 @@ float to_volt(float percent){
  */
 
 int to_port(int port){
-  if(port > 8 || port < 0){
+  if(port > 8 || port < 1){
     return(0);
   }
   return(port-1);
